@@ -1,0 +1,20 @@
+PHP
+
+<?
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//+++ Filename: 	
+//+++ Author:		Patick McGuire
+//+++ Date:			September 21, 2007
+//+++ Description:
+//---------------------------------------------
+//+++ This file may contain code published under the GPL or other open source licences, when avaiable due credit 
+//+++ will be given. Origional code by the listed author remains completly open source published under the creative
+//+++ commons licence found at http://creativecommons.org/licenses/by-sa/3.0/us/ or the most recent version aviable
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+?>
+
+
+JS
+
+
+

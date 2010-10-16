@@ -1,0 +1,1 @@
+<div style="background-color:#990000;" align="center" ><a href="https://lists.sourceforge.net/lists/listinfo/pmnet-auction-devel" target="_blank" style="text-decoration:none; color:#ffffff; font-weight:bolder font-size:18px; font-variant:small-caps"> Mailing List - Click Here to Sign Up - We Need Your Comments and Feedback - See New Features as they are Completed</a></div>

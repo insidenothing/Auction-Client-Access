@@ -1,0 +1,6 @@
+<?
+unlink('smartDownload.lock');
+
+
+
+?>

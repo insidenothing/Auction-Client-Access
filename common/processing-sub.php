@@ -1,0 +1,1 @@
+<a class="mmenu" href="new.php" target="_blank">New Auction</a>

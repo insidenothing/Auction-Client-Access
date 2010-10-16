@@ -1,0 +1,1 @@
+<div style="border:ridge 3px #00FFFF; background-color:#ccccFF; text-align:center;"><b>Having trouble loading PDF's with Adobe?</b><br>Click <b>[HTML]</b> to load using our proprietary online PDF viewer.<br><b>100%</b> IE <em>and</em> Firefox Compatible.</div>

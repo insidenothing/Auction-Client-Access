@@ -1,0 +1,108 @@
+@charset "utf-8";
+/* CSS Document */
+body		{
+	margin:0px;
+	background-color:#FFFFFF;
+	background-image:url(/images/maryland-county-map.gif);
+	background-attachment: fixed;
+	background-position:bottom right;
+	background-repeat:no-repeat;
+			}
+fieldset	{
+	background-color:#99FFCC;
+	border:ridge;
+	border-color:#00CC00;
+	border-width:8px;
+	margin:5px;
+			}
+legend		{
+	background-color:#FFFFFF;
+	border:ridge;
+	border-color:#FF0000;
+	border-width:2px;
+	color:#000000;
+	font-size:22px;
+			}
+label		{
+	font-weight:bold;
+	width:200px;
+			}
+a			{
+	text-decoration:underline;
+	color:#0033FF;
+			}			
+.green		{
+	background-color:#FFFF00;
+	border-color:#FF0000;
+			}
+.r1			{ 
+	background-color:#FFFFFF;
+	color:#000000;
+	border-top-style:solid; 
+	border-top-width:1px;
+	border-bottom-style:solid; 
+	border-bottom-width:1px;
+	white-space:pre;
+			}
+/* the following are the codes used in the "day views"*/			
+.canceled	{
+	font-size:10px; 
+	background-color:#cccccc;
+	padding:0px; 
+	color:#000000; 
+	white-space:pre;
+	border-top-style:solid; 
+	border-top-width:1px;
+	border-bottom-style:solid; 
+	border-bottom-width:1px;
+			}
+.postponed	{
+	font-size:10px; 
+	background-color:#FFFF00; 
+	color:#000000; 
+	white-space:pre;
+	border-top-style:solid; 
+	border-top-width:1px;
+	border-bottom-style:solid; 
+	border-bottom-width:1px;
+			}
+.r1			{ 
+	font-size:14px; 
+	background-color:#FFFFFF;
+	color:#000000;
+	border-top-style:solid; 
+	border-top-width:1px;
+	border-bottom-style:solid; 
+	border-bottom-width:1px;
+	white-space:pre;
+			}
+/* x is a display class for attorneys  */
+.x1{ border-right-width:3px;border-right-color:#FF0000; border-right-style:solid; text-align:left;}
+.x2{ border-right-width:3px;border-right-color:#0000FF; border-right-style:solid; text-align:left;}
+.x3{ border-right-width:3px;border-right-color:#00CC00; border-right-style:solid; text-align:left;}
+.x4{ border-right-width:3px;border-right-color:#FFFF00; border-right-style:solid; text-align:left;}
+.x5{ border-right-width:3px;border-right-color:#00FFFF; border-right-style:solid; text-align:left;}
+.x6{ border-right-width:3px;border-right-color:#0FFFF0; border-right-style:solid; text-align:left;}
+.x7{ border-right-width:3px;border-right-color:#F0000F; border-right-style:solid; text-align:left;}
+.x8{ border-right-width:3px;border-right-color:#F0F0F0; border-right-style:solid; text-align:left;}
+.x9{ border-right-width:3px;border-right-color:#996699; border-right-style:solid; text-align:left;}
+.x10{ border-right-width:3px;border-right-color:#FF33CC; border-right-style:solid; text-align:left;}
+.x11{ border-right-width:3px;border-right-color:#FF33CC; border-right-style:solid; text-align:left;}
+.x12{ border-right-width:3px;border-right-color:#FF33CC; border-right-style:solid; text-align:left;}
+.x13{ border-right-width:3px;border-right-color:#FF33CC; border-right-style:solid; text-align:left;}
+.x14{ border-right-width:3px;border-right-color:#FF33CC; border-right-style:solid; text-align:left;}
+.x15{ border-right-width:3px;border-right-color:#FF33CC; border-right-style:solid; text-align:left;}
+.x16{ border-right-width:3px;border-right-color:#FF33CC; border-right-style:solid; text-align:left;}
+.x17{ border-right-width:3px;border-right-color:#FF33CC; border-right-style:solid; text-align:left;}
+.x18{ border-right-width:3px;border-right-color:#FF33CC; border-right-style:solid; text-align:left;}
+.x19{ border-right-width:3px;border-right-color:#FF33CC; border-right-style:solid; text-align:left;}
+.x20{ border-right-width:3px;border-right-color:#FF33CC; border-right-style:solid; text-align:left;}
+.x21{ border-right-width:3px;border-right-color:#FF33CC; border-right-style:solid; text-align:left;}
+.x22{ border-right-width:3px;border-right-color:#FF33CC; border-right-style:solid; text-align:left;}
+.x23{ border-right-width:3px;border-right-color:#FF33CC; border-right-style:solid; text-align:left;}
+.x24{ border-right-width:3px;border-right-color:#FF33CC; border-right-style:solid; text-align:left;}
+.x25{ border-right-width:3px;border-right-color:#FF33CC; border-right-style:solid; text-align:left;}
+.x26{ border-right-width:3px;border-right-color:#FF33CC; border-right-style:solid; text-align:left;}
+.x27{ border-right-width:3px;border-right-color:#FF33CC; border-right-style:solid; text-align:left;}
+.x28{ border-right-width:3px;border-right-color:#FF33CC; border-right-style:solid; text-align:left;}
+			

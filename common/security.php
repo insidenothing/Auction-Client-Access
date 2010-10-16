@@ -1,0 +1,1 @@
+<? session_start(); $connect_step1 = @mysql_connect ('hwa1.hwestauctions.com', '', ''); $connect_step2 = mysql_select_db ('intranet'); if (!$_COOKIE['userdata'][status]){ header('Location: access.php'); }?>
