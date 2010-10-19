@@ -1,5 +1,13 @@
 <?
+mysql_connect();
+mysql_select_db('intranet');
+include 'security.php';
 include 'common/functions.php';
+function valueData($key){
+  $r=@mysql_query("select valueData from config where keyData = '$key'");
+  $d=mysql_fetch_array($r,MYSQL_ASSOC);
+  return $d[valueData];
+}
 function talk($to,$message){
 	include_once '/thirdParty/xmpphp/XMPPHP/XMPP.php';
 	$conn = new XMPPHP_XMPP('talk.google.com', 5222, 'talkabout.files@gmail.com', valueData('talkabout.files@gmail.com'), 'xmpphp', 'gmail.com', $printlog=false, $loglevel=XMPPHP_Log::LEVEL_INFO);
@@ -16,9 +24,8 @@ function talk($to,$message){
 		die($e->getMessage());
 	}
 }
-mysql_connect('hwa1.hwestauctions.com','','');
-mysql_select_db('intranet');
-include 'security.php';
+
+
 onlinePortal($user[contact_id]);
 hardLog(id2attorneys($user[attorneys_id]).'] ['.$user[name].' Loaded '.$_SERVER[PHP_SELF].'+'.$_SERVER[QUERY_STRING ],'client');
 function pullStatus($url, $referer){
@@ -49,10 +56,3 @@ a:hover {text-decoration:none; color:#000000; font-weight:bold;}
       .noprint { display: none; }
     }
   </style> 
-<?
-function valueData($key){
-  $r=@mysql_query("select valueData from config where keyData = '$key'");
-  $d=mysql_fetch_array($r,MYSQL_ASSOC);
-  return $d[valueData];
-}
-?>
