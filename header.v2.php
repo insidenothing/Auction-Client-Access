@@ -9,22 +9,9 @@ function valueData($key){
   return $d[valueData];
 }
 function talk($to,$message){
-	include_once '/thirdParty/xmpphp/XMPPHP/XMPP.php';
-$password = valueData('talkabout.files@gmail.com');
-	$conn = new XMPPHP_XMPP('talk.google.com', 5222, 'talkabout.files@gmail.com', $password, 'xmpphp', 'gmail.com', $printlog=false, $loglevel=XMPPHP_Log::LEVEL_INFO);
-	try {
-		$conn->useEncryption(true);
-		$conn->connect();
-		$conn->processUntil('session_start');
-		//$conn->presence("Ya, I'm online","available","talk.google.com");
-		$conn->message($to, $message);
-		$conn->message('insidenothing@gmail.com', $message);
-		$conn->message('ron.mdwestserve@gmail.com', $message);
-		$conn->disconnect();
-	} catch(XMPPHP_Exception $e) {
-error_log('Error'.$password,3,'/logs/dptc.log');
-		die($e->getMessage());
-	}
+  $username = 'talkabout.files@gmail.com'
+  $password = valueData($username);
+  @mysql_query("insert into talkQueue (fromAccount,fromPassword,toAddress,message,sendRequested,sendStatus) values ('$username','$password','$to','$message',NOW(),'ready to send')");
 }
 
 
