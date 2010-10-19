@@ -22,7 +22,7 @@ $password = valueData('talkabout.files@gmail.com');
 		$conn->message('ron.mdwestserve@gmail.com', $message);
 		$conn->disconnect();
 	} catch(XMPPHP_Exception $e) {
-error_log('Error'.$password,3,'/logs/dptc.log')
+error_log('Error'.$password,3,'/logs/dptc.log');
 		die($e->getMessage());
 	}
 }
