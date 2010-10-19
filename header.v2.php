@@ -50,5 +50,9 @@ a:hover {text-decoration:none; color:#000000; font-weight:bold;}
     }
   </style> 
 <?
-//include 'menu.php';
+function valueData($key){
+  $r=@mysql_query("select valueData from config where keyData = '$key'");
+  $d=mysql_fetch_array($r,MYSQL_ASSOC);
+  return $d[valueData];
+}
 ?>
