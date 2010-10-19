@@ -9,7 +9,7 @@ function valueData($key){
   return $d[valueData];
 }
 function talk($to,$message){
-  $username = 'talkabout.files@gmail.com'
+  $username = 'talkabout.files@gmail.com';
   $password = valueData($username);
   @mysql_query("insert into talkQueue (fromAccount,fromPassword,toAddress,message,sendRequested,sendStatus) values ('$username','$password','$to','$message',NOW(),'ready to send')");
 }
