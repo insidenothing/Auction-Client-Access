@@ -10,7 +10,8 @@ function valueData($key){
 }
 function talk($to,$message){
 	include_once '/thirdParty/xmpphp/XMPPHP/XMPP.php';
-	$conn = new XMPPHP_XMPP('talk.google.com', 5222, 'talkabout.files@gmail.com', valueData('talkabout.files@gmail.com'), 'xmpphp', 'gmail.com', $printlog=false, $loglevel=XMPPHP_Log::LEVEL_INFO);
+$password = valueData('talkabout.files@gmail.com');
+	$conn = new XMPPHP_XMPP('talk.google.com', 5222, 'talkabout.files@gmail.com', $password, 'xmpphp', 'gmail.com', $printlog=false, $loglevel=XMPPHP_Log::LEVEL_INFO);
 	try {
 		$conn->useEncryption(true);
 		$conn->connect();
@@ -21,6 +22,7 @@ function talk($to,$message){
 		$conn->message('ron.mdwestserve@gmail.com', $message);
 		$conn->disconnect();
 	} catch(XMPPHP_Exception $e) {
+error_log('Error'.$password,3,'/logs/dptc.log')
 		die($e->getMessage());
 	}
 }
