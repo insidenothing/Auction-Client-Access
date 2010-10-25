@@ -71,7 +71,7 @@ function buildProof($id){
 $userID = email2id($user[email]);
 if ($_GET[go] && $userID){
 //error_log("cancel.v2.php:good: [Auction $_GET[go]] [".date('h:iA n/j/y')."] [Name: ".$user[name]."] - [ID: ".$userID."] - [AttID: ".$user[attorneys_id]."] - [Email: ".$user[email]."] [IP: ".$_SERVER["REMOTE_ADDR"]."] \n", 3, '/logs/error.log');
-talk('hwa.archive@gmail.com',$user[name].' from '.id2attorneys($user[attorneys_id]).' cancelled auction '.$_GET[go]);
+talk('allstaff',$user[name].' from '.id2attorneys($user[attorneys_id]).' cancelled auction '.$_GET[go]);
 
 	$ip = $_SERVER['REMOTE_ADDR'];
 	@mysql_query("UPDATE schedule_items SET pending_cancel='1', pending_by='$userID', pending_on=NOW(), closed_datetime=NOW(), pending_ip='$ip' WHERE schedule_id='$_GET[go]'");
