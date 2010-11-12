@@ -13,8 +13,10 @@ function washAdURI($uri){
 }
 if ($data[pending_cancel] == "1" && $data[item_status] == "ON SCHEDULE"){
 	echo "<div style='background-color:#FF0000' align='center'><font size='+2'>Auction Pending Cancellation/font></div>";
-}
-?>
+}?>
+
+
+
 <a href="details.v2.php?id=<?=$_GET[id]?>">Expanded View</a><?
 if ($data[pending_cancel] == "0" && $data[item_status] == "ON SCHEDULE"){
 	echo ", <a href='cancel.v2.php?id=$data[schedule_id]&uid=$_GET[uid]'><font>Request Auction Cancellation</font></a>
@@ -98,4 +100,14 @@ while ($dn=mysql_fetch_array($rn, MYSQL_ASSOC)){?>
 <? } ?>
 </pre>
 </td></tr></table>
+
+
+
+<? if($data[liveAdHTML]){
+?>
+<h1>Online ad review</h1>
+<div style='border:solid 1px #000;'><?=$data[liveAdHTML];?></div>
+<? } ?>
+
+
 <? include 'footer.v2.php'; ?>
