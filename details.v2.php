@@ -156,6 +156,12 @@ while ($d67 = mysql_fetch_array($r67,MYSQL_ASSOC)){
 		<?=$dn[stamp_date_f];?>:  <?=id2contact($dn[user_id]);?><br>
 		<? } ?>
 </td></tr></table>
+<? if($data[LiveAdHTML]){
+?>
+<h1>Online ad review <a href='http://live.hwestauctions.com/publisher.php?id=<?=$_GET[id];?>&doc=1'>[.doc]</a><a href='http://live.hwestauctions.com/publisher.php?id=<?=$_GET[id];?>&pdf=1'>[.pdf]</a></h1>
+<div style='border:solid 1px #000;'><?=$data[LiveAdHTML];?></div>
+<? } ?>
+
 <?
 
 include 'footer.v2.php';
