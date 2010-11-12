@@ -105,7 +105,7 @@ while ($dn=mysql_fetch_array($rn, MYSQL_ASSOC)){?>
 
 <? if($data[LiveAdHTML]){
 ?>
-<h1>Online ad review</h1>
+<h1>Online ad review <a href='http://live.hwestauctions.com/publisher.php?id=<?=$_GET[id];?>&doc=1'>[.doc]</a><a href='http://live.hwestauctions.com/publisher.php?id=<?=$_GET[id];?>&pdf=1'>[.pdf]</a></h1>
 <div style='border:solid 1px #000;'><?=$data[LiveAdHTML];?></div>
 <? } ?>
 
