@@ -103,10 +103,10 @@ while ($dn=mysql_fetch_array($rn, MYSQL_ASSOC)){?>
 
 
 
-<? if($data[liveAdHTML]){
+<? if($data[LiveAdHTML]){
 ?>
 <h1>Online ad review</h1>
-<div style='border:solid 1px #000;'><?=$data[liveAdHTML];?></div>
+<div style='border:solid 1px #000;'><?=$data[LiveAdHTML];?></div>
 <? } ?>
 
 
