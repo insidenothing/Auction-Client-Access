@@ -35,7 +35,6 @@ if ($aid == "1"){
 	$headers .= "Cc: Leanna Kennebeck <lkennebeck@logs.com> \n";
 }	
 if ($aid == "3"){
-	$headers = "Cc: jsavage@siwpc.com \n";
 	$headers .= "Cc: jbunn@siwpc.com \n";
 }	
 	return $headers;
