@@ -1,6 +1,8 @@
 <?
 include_once '../common/functions.php';
-db_connect('hwa1.hwestauctions.com','intranet','','');
+mysql_connect();
+mysql_select_db('intranet');
+
 $q1 = "SELECT * FROM contacts WHERE uid = '$_GET[uid]'";		
 $r1 = @mysql_query ($q1) or die(mysql_error());
 $user = mysql_fetch_array($r1, MYSQL_ASSOC);
