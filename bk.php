@@ -6,7 +6,7 @@ if (!$_GET[bk_id]){ ?>
 2) Click Next <input type="submit" value="Next">
 </form>
 <? }else{ 
-mysql_connect('hwa1.hwestauctions.com','','');
+mysql_connect();
 mysql_select_db('intranet');
 $att_id = $user[attorneys_id];
 $q="SELECT * FROM schedule_items WHERE attorneys_id = '$att_id' AND file like '%$_GET[bk_id]%' ORDER BY sale_date, sort_time";
