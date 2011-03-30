@@ -1,8 +1,8 @@
-
 <?
 
 include '../common/functions.php';
-db_connect('hwa1.hwestauctions.com','intranet','','');
+mysql_connect();
+mysql_select_db('intranet');
 
 function mkPass(){
 	return rand(1000,9999);
