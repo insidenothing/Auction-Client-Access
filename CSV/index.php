@@ -28,7 +28,7 @@ $_SESSION[total]=0;
 $_SESSION[error]=0;
 $_SESSION[missing]=0;
 $handle = fopen("sample.csv", "r");
-mysql_connect('hwa1.hwestauctions.com','','');
+mysql_connect();
 mysql_select_db('intranet');
 function leading_zeros($value, $places){
     if(is_numeric($value)){
