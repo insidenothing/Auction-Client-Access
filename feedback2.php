@@ -1,6 +1,8 @@
 <?
 include 'header.php';
-db_connect('hwa1.hwestauctions.com','intranet','','');
+mysql_connect();
+mysql_select_db('intranet');
+
 if ($_POST['submit']){
 	if ($_POST['description']){
 		$reporter = $user['name'];
