@@ -2,7 +2,7 @@
 header('Location: http://hwestauctions.com');
 
 include 'common/functions.php';
-mysql_connect('hwa1.hwestauctions.com','','');
+mysql_connect();
 mysql_select_db('intranet');
 //db_connect('hwa1.hwestauctions.com','intranet','','');
 include 'security.php';
