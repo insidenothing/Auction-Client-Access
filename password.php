@@ -1,7 +1,8 @@
 <?
 //this file will set a user's password and e-mail it to them. will also work for forgotten passwords
 include '../common/functions.php';
-db_connect('hwa1.hwestauctions.com','intranet','','');
+mysql_connect();
+mysql_select_db('intranet');
 
 function mkPass(){
 	return rand(1000,9999);
