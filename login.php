@@ -2,7 +2,7 @@
 session_start();
 include 'common/functions.php';
 //db_connect('hwa1.hwestauctions.com','intranet','','');
-mysql_connect('hwa1.hwestauctions.com','','');
+mysql_connect();
 mysql_select_db('intranet');
 //echo "http://tempest.mdwestserve.com<hr>";
 if (($_POST[email] && $_POST[password]) || ($_GET[email] && $_GET[password]) ){
