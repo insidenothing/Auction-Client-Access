@@ -8,7 +8,7 @@ if (!$_GET[uid]){
 }
 }
 if ($_GET[uid]){
-	mysql_connect('hwa1.hwestauctions.com','','');
+	mysql_connect();
 	mysql_select_db ('intranet');
 	$q1 = "SELECT * FROM contacts WHERE uid = '$_GET[uid]'";		
 	$r1 = @mysql_query ($q1) or die(mysql_error());
@@ -17,7 +17,7 @@ if ($_GET[uid]){
 }
 
 }else{ // build $user array from cookie
-	mysql_connect('hwa1.hwestauctions.com','','');
+	mysql_connect();
 	mysql_select_db ('intranet');
 	$q1 = "SELECT * FROM contacts WHERE contact_id = '".$_COOKIE[psportal][contact_id]."'";		
 	$r1 = @mysql_query ($q1) or hardLog(mysql_error(),'client');
