@@ -135,18 +135,18 @@ if (strlen($time) != 5){
 $foundOn="";
 
 // check the database
-        echo $today;
+        // echo $today;
 		$query = "SELECT schedule_id FROM schedule_items WHERE address1 = '".pureString(trim($d[address1]))."' AND file = '".trim($d[file_number])."' AND sale_date > '$today' AND sale_date = '".trim($date)."' and sale_time like '".trim($time)."%'";
-		echo $query;
+		// echo $query;
 		$resource = @mysql_query($query);
 		$data = mysql_fetch_array($resource,MYSQL_ASSOC);
-		echo $data;
+		// echo $data;
 		if(!$data[schedule_id]){
 				if (pieceData('file',$d[file_number]) == 'Not Found'){
 				$_SESSION[missing]++;
 			}else{
 				$query33 = "SELECT notes, schedule_id, sale_date, sale_time, item_status, address1 FROM schedule_items WHERE file = '$d[file_number]' AND sale_date > '$today'";
-				echo $query33;
+				// echo $query33;
 				$resource33 = @mysql_query($query33);
 				
 				while($data33 = mysql_fetch_array($resource33,MYSQL_ASSOC)){
@@ -164,10 +164,10 @@ $foundOn="";
 				$_SESSION[error]++;
 			}
 			$query44 = "SELECT * FROM csvReportHistory WHERE clientFile = '$d[file_number]' AND address1 = '$d[address1]' AND sale_date = '$date' AND sale_time = '$time'";
-			echo $query44;
+			// echo $query44;
 			$resource44 = @mysql_query($query44);
 			$data44 = mysql_fetch_array($resource44,MYSQL_ASSOC);
-			echo $data44;
+			// echo $data44;
 			if (!$data44[historyID]){
 				@mysql_query("insert into csvReportHistory ( clientFile, sale_date, sale_time, address1, firstReported ) values ( '$d[file_number]', '$date', '$time', '$d[address1]', NOW() )");
 			}else{
