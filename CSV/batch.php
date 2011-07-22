@@ -1,4 +1,4 @@
-<?
+<?PHP
 // keep batch processing to a minium....
 function echoFile($file){
 			echo "<div><li>Process $file</li>";
@@ -51,7 +51,7 @@ function dirList($directory){
 
 
 
-<? 
+<?PHP 
 // run once to decompressed
 dirList('/data/auction/queue2');
 // run again to assign recently extracted
