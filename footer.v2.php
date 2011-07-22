@@ -1,10 +1,10 @@
-<? mysql_close(); ?>
+<?PHP mysql_close(); ?>
 <style>
 table {
 	border-collapse:collapse;
 	}
 </style>
-<? 
+<?PHP 
 if (!function_exists('valueData')) {
  function valueData($key){
   $r=@mysql_query("select valueData from config where keyData = '$key'");
