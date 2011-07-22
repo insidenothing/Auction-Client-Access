@@ -1,4 +1,4 @@
-<?
+<?PHP
 include 'header.v2.php';
 $options = '';
 hardLog(id2attorneys($user[attorneys_id]).'] ['.$user[name].' Loaded '.$_SERVER[PHP_SELF].'+'.$_SERVER[QUERY_STRING ],'client');
@@ -19,23 +19,23 @@ while ($dloop = mysql_fetch_array($r,MYSQL_ASSOC)){
 $options .= "<option>$dloop[genDate]</option>";
 }
 ?>
-<form id="form"><input name="uid" value="<?=$_GET[uid];?>" type="hidden"><select name="genDate" onChange="form.submit()"><option>Select New Date</option><?=$options;?></select> <? if ($_GET[genDate]){?><br>Invoices Generated For <?=$_GET[genDate];?>.</form>
-<? $r = @mysql_query("select * from AIVC where genDate = '$_GET[genDate]' and attid = '$user[attorneys_id]'");?>
+<form id="form"><input name="uid" value="<?PHP echo $_GET[uid];?>" type="hidden"><select name="genDate" onChange="form.submit()"><option>Select New Date</option><?PHP echo $options;?></select> <?PHP if ($_GET[genDate]){?><br>Invoices Generated For <?PHP echo $_GET[genDate];?>.</form>
+<?PHP $r = @mysql_query("select * from AIVC where genDate = '$_GET[genDate]' and attid = '$user[attorneys_id]'");?>
 <table width="100%" border='1' cellpadding='2'>
 	<tr>
 		<td align="center">Date Generated</td>
 		<td align="center">HWA Auction ID</td>
 		<td align="center">Invoice Control Link</td>
 	</tr>
-<? while ($d=mysql_fetch_array($r,MYSQL_ASSOC)){ if ($d[url]){?>
+<?PHP while ($d=mysql_fetch_array($r,MYSQL_ASSOC)){ if ($d[url]){?>
 	<tr>
-		<td align="center"><?=$d[stored]?></td>
-		<td align="center"><?=$d[auctionID]?></td>
-		<td align="center"><a href="<?=$d[url]?>" target='_Blank'>PDF INVOICE</a></td>
+		<td align="center"><?PHP echo $d[stored]?></td>
+		<td align="center"><?PHP echo $d[auctionID]?></td>
+		<td align="center"><a href="<?PHP echo $d[url]?>" target='_Blank'>PDF INVOICE</a></td>
 	</tr>
-<? }}?>
+<?PHP }}?>
 </table>
-<? } // end test for _GET[genDate] from line 10 ?>
-<?
+<?PHP } // end test for _GET[genDate] from line 10 ?>
+<?PHP
 include 'footer.v2.php';
 ?>
