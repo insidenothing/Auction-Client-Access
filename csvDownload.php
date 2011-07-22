@@ -1,4 +1,4 @@
-<?
+<?PHP
 
 function csvRow($packet){
 $count=0;
