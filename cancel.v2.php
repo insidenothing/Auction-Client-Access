@@ -1,4 +1,4 @@
-<?
+<?PHP
 include 'header.v2.php';
 function email2id($email){
 	$r=@mysql_query("select contact_id from contacts where email = '$email'");
@@ -104,34 +104,34 @@ talk('allstaff',$user[name].' from '.id2attorneys($user[attorneys_id]).' cancell
 // note pending cancelation on details screen
 
 ?>
-<? if (!$_GET[go]){
+<?PHP if (!$_GET[go]){
 if ($user[attorneys_id] == 1){
 	//recordEvent("Prompt: $user[name] are you sure you want to cancel the auction for: $data[file], $data[address1] on $data[sale_date]");
 }
 ?>
 <div style="font-size:22px">
-Auction # <?=$_GET[id]?><br />
+Auction # <?PHP echo $_GET[id]?><br />
 <br />
 Are you sure you want to cancel the auction for:<br />
-File <?=$data[file]?>, <?=$data[address1]?> on <?=$data[sale_date]?>.<br />
+File <?PHP echo $data[file]?>, <?PHP echo $data[address1]?> on <?PHP echo $data[sale_date]?>.<br />
 <br />
 <br />
-<a href="?go=<?=$_GET[id]?>">[Request Cancellation]</a> or <a href="simpleDetails.v2.php?id=<?=$_GET[id]?>">[Take Me Back to Auction Details]</a>
+<a href="?go=<?PHP echo $_GET[id]?>">[Request Cancellation]</a> or <a href="simpleDetails.v2.php?id=<?PHP echo $_GET[id]?>">[Take Me Back to Auction Details]</a>
 </div>
-<? }else{ 
+<?PHP }else{ 
 if ($user[attorneys_id] == 1){
 	recordEvent("$user[name] confirmed request to cancel the auction for: $data[file], $data[address1] on $data[sale_date]");
 }
 ?>
 <div style="font-size:22px">
-Cancellation Request Recieved for Auction # <?=$_GET[go]?><br />
+Cancellation Request Recieved for Auction # <?PHP echo $_GET[go]?><br />
 <br />
-File <?=$data[file]?>, <?=$data[address1]?> on <?=$data[sale_date]?>.<br />
+File <?PHP echo $data[file]?>, <?PHP echo $data[address1]?> on <?PHP echo $data[sale_date]?>.<br />
 <br />
 <br />
-<a href="simpleDetails.v2.php?id=<?=$_GET[go]?>">[Take Me Back to Auction Details]</a>
+<a href="simpleDetails.v2.php?id=<?PHP echo $_GET[go]?>">[Take Me Back to Auction Details]</a>
 </div>
 
-<? }?>
+<?PHP }?>
 
-<? include 'footer.v2.php'; ?>
+<?PHP include 'footer.v2.php'; ?>
