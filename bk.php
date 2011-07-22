@@ -1,11 +1,11 @@
-<? 
+<?PHP 
 include 'security.php';
 if (!$_GET[bk_id]){ ?>
 <form>
 1) Enter File Number <input name="bk_id"><br>
 2) Click Next <input type="submit" value="Next">
 </form>
-<? }else{ 
+<?PHP }else{ 
 mysql_connect();
 mysql_select_db('intranet');
 $att_id = $user[attorneys_id];
@@ -14,8 +14,8 @@ $r=@mysql_query($q);
 ?>
 <div style="font-size:45px;" align="center"><input type="button" class="noprint" onclick="self.print();" value="Print Case Report"><br>Harvey West Auctioneers</div>
 <div style="font-size:30px;" align="center">
-Case Report for <?=$_GET[bk_id]?><br>
-<?=date('r');?>
+Case Report for <?PHP echo $_GET[bk_id]?><br>
+<?PHP echo date('r');?>
 </div>
 <br />
 <br />
@@ -27,7 +27,7 @@ Case Report for <?=$_GET[bk_id]?><br>
 <br />
 <div style="font-size:20px;">
 Searching Entire Database....
-<?
+<?PHP
 $counter=0;
 while ($d = mysql_fetch_array($r, MYSQL_ASSOC)) {	
 $counter++;
@@ -64,7 +64,7 @@ Main Office 410-769-9797
 <br />
 <br />
 <center>&copy; 1950 - 2009 Harvey West Auctioneers, llc.</center>
-<? } ?>
+<?PHP } ?>
 <style>
 @media print {
 .noprint { display: none; }
