@@ -131,9 +131,9 @@ $missing = ob_get_clean();
 ob_start();
 ?>
 <span>
-Schedule Conflicts: <?=$_SESSION[error]?><br>
-No Auction Scheduled: <?=$_SESSION[missing]?><br>
-Auctions Verified: <?=$_SESSION[total]-$_SESSION[error]-$_SESSION[missing];?><br>
+Schedule Conflicts: <?PHP echo $_SESSION[error]?><br>
+No Auction Scheduled: <?PHP echo $_SESSION[missing]?><br>
+Auctions Verified: <?PHP echo $_SESSION[total]-$_SESSION[error]-$_SESSION[missing];?><br>
 </span>
 <? 
 $report = ob_get_clean(); 
@@ -147,7 +147,7 @@ Choose a csv file to upload: <input name="csv" type="file" />
 <input type="submit" value="Run Test" />
 </form>
 </div>
-<?=$report;?>
+<?PHP echo $report;?>
 <style>
 @media print {
 	div { display: none; }
@@ -162,5 +162,5 @@ td { border-top:solid 1px #cccccc; }
 		<td>Time</td>
 		<td>Error</td>
 	</tr>
-<?=$missing;?>
+<?PHP echo $missing;?>
 </table>
