@@ -1,4 +1,4 @@
-<?
+<?PHP
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //+++ Filename: 	auctioneers-bar.php
 //+++ Author:		Patick McGuire
@@ -10,7 +10,7 @@
 //+++ commons licence found at http://creativecommons.org/licenses/by-sa/3.0/us/ or the most recent version aviable
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 ?>
-<?
+<?PHP
 if ($_GET[toggle]){ 
 	if ($_GET[toggle] == "show"){
 		$_SESSION[toggle] = "hide";
@@ -61,7 +61,7 @@ body{margin:0px}
                                 <option value="purchaser">Purchaser</option>
                             </select>
                             <input id="q" size="10" style=" background-color:#CCFFFF;font-weight:bold; font-variant:small-caps" name="q" />
-                            <input style=" font-weight:bold; font-variant:small-caps" type="submit"  value="Search"/><br>Welcome <?=$_COOKIE[userdata][name]?>, You are now in sale processing.
+                            <input style=" font-weight:bold; font-variant:small-caps" type="submit"  value="Search"/><br>Welcome <?PHP echo $_COOKIE[userdata][name]?>, You are now in sale processing.
                     	</span>
                     </td>
 				</tr>
@@ -84,7 +84,7 @@ body{margin:0px}
         <td class="left-on-right-off">&nbsp;</td>
     	<td class="off"><a class="link-off" href="/print_menu.php" target="_blank">Print</a></td>
         <td class="left-off-right-off">&nbsp;</td>
-    	<td class="off"><a class="link-off" href="/auctioneers.php?toggle=<? if ($_SESSION[toggle] == "hide"){?>hide<? }else{ ?>show<? }?>&<?=$query?>">Note Editor</a></td>
+    	<td class="off"><a class="link-off" href="/auctioneers.php?toggle=<?PHP if ($_SESSION[toggle] == "hide"){?>hide<?PHP }else{ ?>show<?PHP }?>&<?PHP echo $query?>">Note Editor</a></td>
         <td class="off" width="99%"></td>
 	</tr>
 </table>
