@@ -1,4 +1,4 @@
-<?
+<?PHP
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //+++ Filename: 	accounting-bar.php
 //+++ Author:		Patick McGuire
@@ -33,11 +33,11 @@ body{margin:0px}
         
         
         	<table width="100%">
-            	<? if ($_GET[page] != "search"){?>
+            	<?PHP if ($_GET[page] != "search"){?>
 				<form action="accounting.php?page=search" target="_blank">	
-            	<? }else{?>
+            	<?PHP }else{?>
 				<form action="accounting.php?page=search">	
-            	<? }?>
+            	<?PHP }?>
 				
                 
                 <tr bgcolor="#FFFFFF"> 
@@ -55,7 +55,7 @@ body{margin:0px}
                                 <option value="ad_cost">Publication Cost</option>
                             </select>
                             <input size="10" style=" background-color:#CCFFFF;font-weight:bold; font-variant:small-caps" name="q" />
-                            <input style=" font-weight:bold; font-variant:small-caps" type="submit"  value="Search"/><br>Welcome <?=$_COOKIE[userdata][name]?>, You are now in accounting.
+                            <input style=" font-weight:bold; font-variant:small-caps" type="submit"  value="Search"/><br>Welcome <?PHP echo $_COOKIE[userdata][name]?>, You are now in accounting.
                     	</span>
                     </td>
 				</tr>
