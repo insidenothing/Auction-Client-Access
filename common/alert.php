@@ -5,7 +5,7 @@ function hideAlert(){
 }
 setTimeout("hideAlert()",3000); 
 </script>
-<? 
+<?PHP 
 if ($alert && 
 				$_GET[page] != "new_cancellations" && 
 				$_GET[page] != "pub_cost" && 
@@ -23,7 +23,7 @@ if ($alert &&
         <td align="center">
         	<div style="background-color:#CCCCFF; position:absolute; top:0px; right:0px; width:100%; height:100% z-index:10;">
                 <div align="center" style="text-align:left;">
-                	<ol><?=$alert?></ol>
+                	<ol><?PHP echo $alert?></ol>
                 </div>
                 <!--<a style="color:#00FF00; font-size:24px" onClick="hideAlert()">OK</a>
                 <hr width="50%" color="#00FF00" />--
@@ -32,4 +32,4 @@ if ($alert &&
     </tr>
     -->
 </table>
-<? } ?> 
+<?PHP } ?> 
