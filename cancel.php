@@ -1,4 +1,4 @@
-<?
+<?PHP
 include 'header.php';
 
 if ($_GET[go]){
@@ -27,25 +27,25 @@ if ($_GET[go]){
 // note pending cancelation on details screen
 
 ?>
-<? if (!$_GET[go]){?>
+<?PHP if (!$_GET[go]){?>
 <div style="font-size:22px">
-Auction # <?=$_GET[id]?><br />
+Auction # <?PHP echo $_GET[id]?><br />
 <br />
 Are you sure you want to cancel the auction for:<br />
-File <?=$data[file]?>, <?=$data[address1]?> on <?=$data[sale_date]?>.<br />
+File <?PHP echo $data[file]?>, <?PHP echo $data[address1]?> on <?PHP echo $data[sale_date]?>.<br />
 <br />
 <br />
-<a href="?go=<?=$_GET[id]?>&uid=<?=$_GET[uid]?>">[Request Cancellation]</a> or <a href="details.php?id=<?=$_GET[id]?>&uid=<?=$_GET[uid]?>">[Take Me Back to Auction Details]</a>
+<a href="?go=<?PHP echo $_GET[id]?>&uid=<?PHP echo $_GET[uid]?>">[Request Cancellation]</a> or <a href="details.php?id=<?PHP echo $_GET[id]?>&uid=<?PHP echo $_GET[uid]?>">[Take Me Back to Auction Details]</a>
 </div>
-<? }else{ ?>
+<?PHP }else{ ?>
 
 <div style="font-size:22px">
-Cancellation Request Recieved for Auction # <?=$_GET[go]?><br />
+Cancellation Request Recieved for Auction # <?PHP echo $_GET[go]?><br />
 <br />
-File <?=$data[file]?>, <?=$data[address1]?> on <?=$data[sale_date]?>.<br />
+File <?PHP echo $data[file]?>, <?PHP echo $data[address1]?> on <?PHP echo $data[sale_date]?>.<br />
 <br />
 <br />
-<a href="details.php?id=<?=$_GET[go]?>&uid=<?=$_GET[uid]?>">[Take Me Back to Auction Details]</a>
+<a href="details.php?id=<?PHP echo $_GET[go]?>&uid=<?PHP echo $_GET[uid]?>">[Take Me Back to Auction Details]</a>
 </div>
 
-<? }?>
+<?PHP }?>
