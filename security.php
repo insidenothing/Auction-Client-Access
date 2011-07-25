@@ -3,6 +3,7 @@
 if (isset($_COOKIE['psportal']['name'])){
 $user = array(
 'name' => $_COOKIE['psportal']['name'],
+'contact_id' => $_COOKIE['psportal']['contact_id'],
 'attorneys_id' => $_COOKIE['psportal']['attorneys_id'],
 'email' => $_COOKIE['psportal']['email']
 );
