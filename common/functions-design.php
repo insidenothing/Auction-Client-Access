@@ -1,4 +1,4 @@
-<?
+<?PHP
 function color(){
 	$color[0] = "00";
 	$color[1] = "33";
