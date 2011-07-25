@@ -1,4 +1,4 @@
-<?
+<?PHP
 function paper2contact($id){
 	$q = "select name from paper_contacts where contact_id='$id'";
 	$r = @mysql_query($q);
