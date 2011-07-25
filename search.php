@@ -50,7 +50,7 @@ if ( $data1['item_status'] == "SALE CANCELLED"){ $class = 'canceled';	} else {$c
 $code = "x".$data1['attorneys_id'];
 echo "
 <tr>
-<td style='text-align:left;' nowrap><a href='simpleDetails.php?id=".$data1['schedule_id']."'>Simple View</a></td>
+<td style='text-align:left;' nowrap><a href='simpleDetails.v2.php?id=".$data1['schedule_id']."'>Simple View</a></td>
 
 <td style='text-align:left;' nowrap><a href='details.v2.php?id=".$data1['schedule_id']."'>Expanded View</a></td>
 
