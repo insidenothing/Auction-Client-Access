@@ -10,7 +10,7 @@ $q="SELECT * FROM contacts WHERE online_now > '$back' AND attorneys_id = '".$use
 $r=@mysql_query($q);
 while ($d=mysql_fetch_array($r, MYSQL_ASSOC)){
 ?>
-<?PHP echo strtoupper(id2contact($d[contact_id]))?>,  
+<?PHP echo strtoupper(id2contact($d['contact_id']))?>,  
 <?PHP }
 }
 // now we need to show bound staff
