@@ -1,7 +1,7 @@
 <table align="center" style=" border-collapse:collapse;" border="0" class="noprint">
 <form action="search.php">	
 	<tr>
-    	<td align="center"><?PHP if ($_SERVER['PHP_SELF'] != "/portal/desktop.php"){ ?><a href="desktop.php?uid=<?=$uid?>"><?=$user[name]?>'s Desktop</a><? } ?></td>
+    	<td align="center"><a href="desktop.php"><?=$user['name']?>'s Desktop</a><? } ?></td>
             <td align="center">
                 <input type="hidden" name="page" value="search" />
              
