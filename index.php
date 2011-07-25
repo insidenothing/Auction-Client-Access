@@ -1,16 +1,18 @@
-<?
+<?PHP
+include security.php
+
 header('Location: desktop.php');
 include 'header.php';
 
 ?>
 
 <div style="font-size:20px; padding:5px;">
-  Welcome <?=$user[name]?>,<br /><br />
+  Welcome <?PHP echo $user[name]?>,<br /><br />
 </div>
 <br />
 
 
-<?
+<?PHP
 include 'footer.php';
 ?>
 <script>
