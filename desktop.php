@@ -42,7 +42,7 @@ fieldset, legend {border:none; padding:5px;; font-size:20px;}
 			<li><a href="upload.php">Place Order for Auction</a></li>
 		<?PHP } ?>
 		<li><a href="transfer_history.php">Transfers Log</a></li>
-		<?PHP if ($user[user_admin] == "YES"){?>
+		<?PHP if ($user['user_admin'] == "YES"){?>
 			<li><a href="users.php">User Management</a></li>
 			<li><a href="settings.php">Client Options</a></li>
 		<?PHP } ?>
