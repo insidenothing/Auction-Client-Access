@@ -1,4 +1,4 @@
-<?
+<?PHP
 session_start();
 include 'common/functions.php';
 mysql_connect();
@@ -36,11 +36,11 @@ hardLog(id2attorneys($user[attorneys_id]).'] ['.$user[name].' Loaded '.$_SERVER[
 
 <form method="post">
 <table align="center" height="300" style="font-size:24px" cellpadding="10">
-	<? if ($error){?>
+	<?PHP if ($error){?>
 	<tr bgcolor="#FFCC33">
-		<td colspan="2" align="center"><?=$error;?></td>
+		<td colspan="2" align="center"><?PHP echo $error;?></td>
 	</tr>
-	<? }?>	
+	<?PHP }?>	
 	<tr>
 		<td>E-Mail Address</td>
 		<td><input name="email" size="30"></td>
@@ -57,11 +57,11 @@ hardLog(id2attorneys($user[attorneys_id]).'] ['.$user[name].' Loaded '.$_SERVER[
 	</tr>	
 </table>
 </form>
-<?
+<?PHP
 include 'footer.php';
 ?>
 <center>
-<?
+<?PHP
 if ($_COOKIE[test]){
 echo $_COOKIE[test];
 }else{
