@@ -20,9 +20,9 @@ td { border-bottom: double 3px #00FF00}
 <center>
 <?PHP
 include 'menu.php';
-$att_id = $user[attorneys_id];
-if ($_GET[q]){
-$q = $_GET[q];
+$att_id = $user['attorneys_id'];
+if ($_GET['q']){
+$q = $_GET['q'];
 ?>
 <style>
 td	{text-align:center; border-bottom: solid 1px #99cc33; padding:3px;}
@@ -35,38 +35,38 @@ mysql_select_db ('intranet');
 $qdate = $year.'-'.$month.'-'.$day;
 hardLog(id2attorneys($user['attorneys_id']).'] ['.$user['name'].' Searching '.$_GET['field'].' for '.$q.'] ['.$_GET['resolution'],'client');
 
-if ($_GET[field] == 'an'){
+if ($_GET['field'] == 'an'){
 	$q1 = "SELECT * FROM schedule_items WHERE attorneys_id = '$att_id' AND schedule_id like '%$q%' ORDER BY sale_date, sort_time";
-}elseif($_GET[field] == 'fn'){
+}elseif($_GET['field'] == 'fn'){
 	$q1 = "SELECT * FROM schedule_items WHERE attorneys_id = '$att_id' AND file like '%$q%' ORDER BY sale_date, sort_time";		
-}elseif($_GET[field] == 'dr'){
+}elseif($_GET['field'] == 'dr'){
 	$q1 = "SELECT * FROM schedule_items WHERE attorneys_id = '$att_id' AND item_date like '%$q%' ORDER BY sale_date, sort_time";		
-}elseif($_GET[field] == 'sd'){
+}elseif($_GET['field'] == 'sd'){
 	$q1 = "SELECT * FROM schedule_items WHERE attorneys_id = '$att_id' AND sale_date like '%$q%' ORDER BY sale_date, sort_time";		
 }
 $r1 = @mysql_query ($q1) or die("QUERY: $q1<hr>".mysql_error());
 while ($data1 = mysql_fetch_array($r1, MYSQL_ASSOC)) {	
 $i++;
-if ( $data1[item_status] == "SALE CANCELLED"){ $class = 'canceled';	} else {$class = 'active';	}
-$code = "x".$data1[attorneys_id];
+if ( $data1['item_status'] == "SALE CANCELLED"){ $class = 'canceled';	} else {$class = 'active';	}
+$code = "x".$data1['attorneys_id'];
 echo "
 <tr>
-<td style='text-align:left;' nowrap><a href='simpleDetails.php?id=$data1[schedule_id]'>Simple View</a></td>
+<td style='text-align:left;' nowrap><a href='simpleDetails.php?id=".$data1['schedule_id']."'>Simple View</a></td>
 
-<td style='text-align:left;' nowrap><a href='details.v2.php?id=$data1[schedule_id]'>Expanded View</a></td>
+<td style='text-align:left;' nowrap><a href='details.v2.php?id=".$data1['schedule_id']."'>Expanded View</a></td>
 
-<td style='text-align:left;' nowrap><a href='invoice.v2.php?auction=$data1[schedule_id]&refer=search'>Invoice</a></td>
+<td style='text-align:left;' nowrap><a href='invoice.v2.php?auction=".$data1['schedule_id']."&refer=search'>Invoice</a></td>
 
-<td style='text-align:left;' nowrap>$data1[file]</td>
+<td style='text-align:left;' nowrap>$data1['file']</td>
 
-<td nowrap>$data1[sale_date] $data1[sale_time]</td>
-<td style='text-align:left;' nowrap>$data1[item_status]</td>
-<td style='text-align:left;' nowrap>".substr($data1[address1],0,30)."</td>
-<td style='text-align:left;' nowrap>$data1[county]</td>
-<td>$data1[schedule_id]</td>
+<td nowrap>$data1['sale_date'] $data1['sale_time']</td>
+<td style='text-align:left;' nowrap>$data1['item_status']</td>
+<td style='text-align:left;' nowrap>".substr($data1['address1'],0,30)."</td>
+<td style='text-align:left;' nowrap>$data1['county']</td>
+<td>$data1['schedule_id']</td>
 </tr>";
 }
-hardLog(id2attorneys($user[attorneys_id]).'] ['.$user[name].' Search Results: '.$i,'client');
+hardLog(id2attorneys($user['attorneys_id']).'] ['.$user['name'].' Search Results: '.$i,'client');
 
 echo "</table>";
 }
