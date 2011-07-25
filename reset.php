@@ -1,5 +1,4 @@
 <?PHP
-//this file will set a user's password and e-mail it to them. will also work for forgotten passwords
 include 'common/functions.php';
 mysql_connect();
 mysql_select_db('intranet');
@@ -20,23 +19,23 @@ if (isset($_POST['email'])){
 	@mysql_query("UPDATE contacts SET password ='$pass' WHERE email = '$email'");
 	mysql_select_db('intranet');
 	
-	portal_log("(LOCAL)Password reset for $email", $data[contact_id]);
+	portal_log("(LOCAL)Password reset for $email", $data['contact_id']);
 
-	$body = "Harvey West / MDWestServe password has arrived!<br>
-			You can log in at http://mdwestserve.com<br>
+	$body = "Harvey West Auctioneers password has arrived!<br>
+			You can log in at http://poeral.hwestauctions.com/login.php<br>
 			E-Mail Address: $email<br>
 			Password: $pass<br><br>
 			
 			Thank you,<br>
 			Patrick McGuire<br>patrick@mdwestserve.com";
-			$subject = "New HWA / MDwestServe Portal Password";
+			$subject = "New HWA Portal Password";
 			$headers  = "MIME-Version: 1.0 \n";
 			$headers .= "Content-type: text/html; charset=iso-8859-1 \n";
-			$headers .= "From: HWA / MDwestServe Portal <service@mdwestserve.com> \n";
-			$headers .= "Bcc: Account Archive <mdwestserve@gmail.com> \n";
+			$headers .= "From: HWA Portal <westads@hwestauctions.com> \n";
+			$headers .= "Bcc: Account Archive <hwa.archive@gmail.com> \n";
 			mail($email,$subject,$body,$headers);
 		$status = "Your New Password Was Sent To $_POST[email]";
-		$status .= "<script>window.location.href='http://hwestauctions.com/intranet.php';</script>";
+		$status .= "<script>window.location.href='http://portal.hwestauctions.com/login.php';</script>";
 	}else{
 		$status = "$_POST[email] Not Found, Contact service@mdwestserve.com For Help";
 	}
