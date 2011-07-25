@@ -1,10 +1,9 @@
 <?
 session_start();
 include 'common/functions.php';
-//db_connect('hwa1.hwestauctions.com','intranet','','');
 mysql_connect();
 mysql_select_db('intranet');
-//echo "http://tempest.mdwestserve.com<hr>";
+
 if (($_POST[email] && $_POST[password]) || ($_GET[email] && $_GET[password]) ){
 	if ($_POST[email]){ $email = $_POST[email]; }else{ $email = $_GET[email];}
 	if ($_POST[password]){ $pass = $_POST[password];}else{$pass = $_GET[password]; }
@@ -17,7 +16,7 @@ if (($_POST[email] && $_POST[password]) || ($_GET[email] && $_GET[password]) ){
 		@mysql_query("UPDATE contacts SET uid='$uid', uid_date=NOW(), uid_ip='$ip' WHERE email = '$email'");
 		mysql_select_db ('intranet');
 		portal_log("$data[name] Logged In ($uid)", $data[contact_id]);
-//mail('pmcguire@hwestauctions.com',"IN: $data[name]",'');
+
 hardLog(id2attorneys($user[attorneys_id]).'] ['.$user[name].' Loaded '.$_SERVER[PHP_SELF].'+'.$_SERVER[QUERY_STRING ],'client');
 
 		header ('Location: desktop.php?uid='.$uid);
