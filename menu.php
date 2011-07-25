@@ -1,7 +1,7 @@
 <table align="center" style=" border-collapse:collapse;" border="0" class="noprint">
 <form action="search.php">	
 	<tr>
-    	<td align="center"><a href="desktop.php"><?=$user['name']?>'s Desktop</a><? } ?></td>
+    	<td align="center"><a href="desktop.php"><?php echo $user['name'];?>'s Desktop</a><? } ?></td>
             <td align="center">
                 <input type="hidden" name="page" value="search" />
              
