@@ -62,7 +62,7 @@ function id2attorneys($id){
 	$q = "SELECT display_name FROM attorneys WHERE attorneys_id='$id'";
 	$r = @mysql_query($q);
 	$d = mysql_fetch_array($r, MYSQL_ASSOC);
-	return $d[display_name];
+	return $d['display_name'];
 }
 function county2court($county){
 	if ($county == "ALLEGANY"){ $court = "ALL CHS";}
