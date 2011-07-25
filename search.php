@@ -57,7 +57,7 @@ echo "
 
 <td style='text-align:left;' nowrap><a href='invoice.v2.php?auction=".$data1['schedule_id']."&refer=search'>Invoice</a></td>
 
-<td style='text-align:left;' nowrap>$data1['file']</td>
+<td style='text-align:left;' nowrap>".$data1['file']."</td>
 
 <td nowrap>".$data1['sale_date']." ".$data1['sale_time']."</td>
 <td style='text-align:left;' nowrap>".$data1['item_status']."</td>
