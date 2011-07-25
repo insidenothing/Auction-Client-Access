@@ -1,4 +1,4 @@
-<?
+<?PHP
 include 'header.v2.php';
 mysql_select_db ('intranet');
 
@@ -14,33 +14,33 @@ if ($data[pending_cancel] == "1" && $data[item_status] == "ON SCHEDULE"){
 }
 ?>
 
-<a href="simpleDetails.v2.php?id=<?=$_GET[id]?>">Simple View</a>
-<?
+<a href="simpleDetails.v2.php?id=<?PHP echo $_GET[id]?>">Simple View</a>
+<?PHP
 if ($data[pending_cancel] == "0" && $data[item_status] == "ON SCHEDULE"){
 	echo ", <a href='cancel.v2.php?id=$data[schedule_id]&uid=$_GET[uid]'><font>Request Auction Cancellation</font></a>";
 }
 ?>
 
 <table width="100%"><tr><td valign="top">
-<font>Auction Scheduled for <?=$data[sale_date]?> at <?=$data[sale_time]?><br />Details for Auction #<?=$data[schedule_id]?> :: <?=$data[item_status]?> :: <?=id2contact($data[canceled_by]);?></font>
+<font>Auction Scheduled for <?PHP echo $data[sale_date]?> at <?PHP echo $data[sale_time]?><br />Details for Auction #<?PHP echo $data[schedule_id]?> :: <?PHP echo $data[item_status]?> :: <?PHP echo id2contact($data[canceled_by]);?></font>
 
 
 <table border="1" width="100%" style="border-collapse:collapse;" cellspacing="0" cellpadding="5">
 	<tr>
     	<td valign="top"><strong>Property Address</strong></td>
-    	<td><?=$data[legal_fault]?><br /><?=$data[address1]?><br /><?=$data[city]?>, <?=$data[state]?> <?=$data[zip]?></td>
+    	<td><?PHP echo $data[legal_fault]?><br /><?PHP echo $data[address1]?><br /><?PHP echo $data[city]?>, <?PHP echo $data[state]?> <?PHP echo $data[zip]?></td>
 	</tr>
 	<tr>
     	<td><strong>Deposit to Bid</strong></td>
-    	<td>$<?=$data[deposit]?>K</td>
+    	<td>$<?PHP echo $data[deposit]?>K</td>
 	</tr>
 	<tr>
     	<td><strong>File #</strong></td>
-    	<td><?=$data[file]?></td>
+    	<td><?PHP echo $data[file]?></td>
 	</tr>
 	<tr>
     	<td valign="top"><strong>Publication Information</strong><br /><small>Primary Publication Only</small></td>
-    	<td bgcolor="#FFcccc">Published in the <?=$data[paper]?>.<br />Starting on <?=$data[ad_start]?> for <?=$data[pub_dates]?>.<br /><? if ($data[pub_cost_flag] == '3' || $data[pub_cost_flag] == ''){ ?>Total Cost: $<?=$data[ad_cost]?> <? }?></td>
+    	<td bgcolor="#FFcccc">Published in the <?PHP echo $data[paper]?>.<br />Starting on <?PHP echo $data[ad_start]?> for <?PHP echo $data[pub_dates]?>.<br /><?PHP if ($data[pub_cost_flag] == '3' || $data[pub_cost_flag] == ''){ ?>Total Cost: $<?PHP echo $data[ad_cost]?> <?PHP }?></td>
 	</tr>
 	<tr>
     	<td colspan="2">
@@ -53,7 +53,7 @@ if ($data[pending_cancel] == "0" && $data[item_status] == "ON SCHEDULE"){
 		</tr>
 		<tr>
 			<td valign="top">
-			<?
+			<?PHP
 			$rfi = @mysql_query("select * from AIVC where auctionID = '$data[schedule_id]' and type = 'FINAL' ");
 			while ($dfi = mysql_fetch_array($rfi,MYSQL_ASSOC)){
 				echo "<li><a href='http://hwestauctions.com$dfi[url]' target='_Blank'>$dfi[stored] ".id2name($dfi[user_id])."</a> <a href='http://portal.hwestauctions.com/PDFviewer/?pdf=http://hwestauctions.com$dfi[url]' target='_Blank'>[HTML]</a></li>";
@@ -61,7 +61,7 @@ if ($data[pending_cancel] == "0" && $data[item_status] == "ON SCHEDULE"){
 			?>
 			</td>
 			<td valign="top">			
-			<?
+			<?PHP
 			$rfi = @mysql_query("select * from AIVC where auctionID = '$data[schedule_id]' and type = 'ESTIMATE' ");
 			while ($dfi = mysql_fetch_array($rfi,MYSQL_ASSOC)){
 				echo "<li><a href='http://hwestauctions.com$dfi[url]' target='_Blank'>$dfi[stored] ".id2name($dfi[user_id])."</a> <a href='http://portal.hwestauctions.com/PDFviewer/?pdf=http://hwestauctions.com$dfi[url]' target='_Blank'>[HTML]</a></li>";
@@ -69,7 +69,7 @@ if ($data[pending_cancel] == "0" && $data[item_status] == "ON SCHEDULE"){
 			?>
 			</td>
 			<td valign="top">
-			<?
+			<?PHP
 			$rfi = @mysql_query("select * from AIVC where auctionID = '$data[schedule_id]' and type <> 'FINAL' and type <> 'ESTIMATE' ");
 			while ($dfi = mysql_fetch_array($rfi,MYSQL_ASSOC)){
 				echo "<li><a href='http://hwestauctions.com$dfi[url]' target='_Blank'>$dfi[stored]</a> <a href='http://portal.hwestauctions.com/PDFviewer/?pdf=http://hwestauctions.com$dfi[url]' target='_Blank'>[HTML]</a></li>";
@@ -78,7 +78,7 @@ if ($data[pending_cancel] == "0" && $data[item_status] == "ON SCHEDULE"){
 			</td>
 		</tr>
 	</table>	
-<? include 'PDFviewer/news.php'; ?>
+<?PHP include 'PDFviewer/news.php'; ?>
 		
 		
 		</td>
@@ -88,7 +88,7 @@ if ($data[pending_cancel] == "0" && $data[item_status] == "ON SCHEDULE"){
     <tr bgcolor="00ff00">
     	<td><b>New Ad Version control</b></td>
         <td>
-        <?
+        <?PHP
 
 		
 function washAdURI($uri){
@@ -103,9 +103,9 @@ return $uri;
 while ($d67 = mysql_fetch_array($r67,MYSQL_ASSOC)){
  ?>
 
-<?=$d67[saved_on];?>: <?=id2name($d67[user_id]);?> <a href="<?=washAdURI($d67[uri]);?>" target="_Blank"><small>view</small></a><br />
+<?PHP echo $d67[saved_on];?>: <?PHP echo id2name($d67[user_id]);?> <a href="<?PHP echo washAdURI($d67[uri]);?>" target="_Blank"><small>view</small></a><br />
 
-<? }?>
+<?PHP }?>
         
         
         
@@ -115,12 +115,12 @@ while ($d67 = mysql_fetch_array($r67,MYSQL_ASSOC)){
    </tr>
    <tr>
     	<td><em>Ad Number</em></td>
-        <td><?=$data[ad_number]?></td>
+        <td><?PHP echo $data[ad_number]?></td>
    </tr>
       <tr>
     	<td><strong>Process Server Status</strong></td>
         <td>
-        <?/*
+        <?PHP/*
 		mysql_select_db ('core');
 
         $q="SELECT * FROM ps_packets WHERE client_file = '$data[file]'";
@@ -138,7 +138,7 @@ while ($d67 = mysql_fetch_array($r67,MYSQL_ASSOC)){
 </td></tr><tr>
 <td valign="top">
 	   <h1>Portal Notes:</h1>
-        <? 		mysql_select_db ('intranet');
+        <?PHP 		mysql_select_db ('intranet');
 
         $qn="SELECT *, DATE_FORMAT(action_on,'%b %e %h:%i%p') as action_on_f FROM portal_notes WHERE action_file = '$data[schedule_id]'";
 		$rn=@mysql_query($qn);
@@ -149,20 +149,20 @@ while ($d67 = mysql_fetch_array($r67,MYSQL_ASSOC)){
 		
 
   <h1>Access Log</h1>
-        <? 
+        <?PHP 
         $qn="SELECT *, DATE_FORMAT(stamp_date,'%b %e %h:%i%p') as stamp_date_f FROM portal_views WHERE auction_id = '$data[schedule_id]' order by stamp_date DESC";
 		$rn=@mysql_query($qn);
 		while ($dn=mysql_fetch_array($rn, MYSQL_ASSOC)){?>
-		<?=$dn[stamp_date_f];?>:  <?=id2contact($dn[user_id]);?><br>
-		<? } ?>
+		<?PHP echo $dn[stamp_date_f];?>:  <?PHP echo id2contact($dn[user_id]);?><br>
+		<?PHP } ?>
 </td></tr></table>
-<? if($data[LiveAdHTML]){
+<?PHP if($data[LiveAdHTML]){
 ?>
-<h1>Online ad review <a href='http://live.hwestauctions.com/publisher.php?id=<?=$_GET[id];?>&doc=1'>[.doc]</a><a href='http://live.hwestauctions.com/publisher.php?id=<?=$_GET[id];?>&pdf=1'>[.pdf]</a></h1>
-<div style='border:solid 1px #000;'><?=$data[LiveAdHTML];?></div>
-<? } ?>
+<h1>Online ad review <a href='http://live.hwestauctions.com/publisher.php?id=<?PHP echo $_GET[id];?>&doc=1'>[.doc]</a><a href='http://live.hwestauctions.com/publisher.php?id=<?PHP echo $_GET[id];?>&pdf=1'>[.pdf]</a></h1>
+<div style='border:solid 1px #000;'><?PHP echo $data[LiveAdHTML];?></div>
+<?PHP } ?>
 
-<?
+<?PHP
 
 include 'footer.v2.php';
 ?>
