@@ -3,7 +3,7 @@
 $back = time()-1800;
 // ok let's show them their contacts
 mysql_select_db ('intranet');
-$q="SELECT * FROM contacts WHERE online_now > '$back' AND attorneys_id = '$user[attorneys_id]' ORDER BY name";
+$q="SELECT * FROM contacts WHERE online_now > '$back' AND attorneys_id = '".$user['attorneys_id']."' ORDER BY name";
 $r=@mysql_query($q);
 while ($d=mysql_fetch_array($r, MYSQL_ASSOC)){
 ?>
