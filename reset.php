@@ -8,8 +8,8 @@ function mkPass(){
 	return rand(1000,9999);
 }
 
-if ($_POST[email]){
-	$email = $_POST[email];
+if ($_POST['email']){
+	$email = $_POST['email'];
 	$pass = mkPass();
 	mysql_select_db('intranet');
 	$q="SELECT * FROM contacts WHERE email = '$email'";
@@ -42,7 +42,7 @@ if ($_POST[email]){
 	}
 
 }
-if ($status){
+if (isset($status)){
 ?>
 <h1 align="center"><?PHP echo $status?></h1>
 <?PHP }?>
