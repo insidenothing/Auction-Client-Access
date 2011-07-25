@@ -15,7 +15,7 @@
 				<option value="sd">Sale Date YYYY-MM-DD</option>
 				<option value="an">Auction Number</option>
 				</select>
-				 for <input size="20" style="font-weight:bold; font-variant:small-caps" name="q" value="<?php echo $_GET[q];?>" />
+				 for <input size="20" style="font-weight:bold; font-variant:small-caps" name="q" value="<?php if(isset($_GET['q'])){ echo $_GET['q']; }?>" />
 				<input style=" font-weight:bold; font-variant:small-caps" type="submit"  value="Search Auction Database"/><br /><strong>Did you know? When searching for files you can use the percent sign '%' as a wildcard!</strong>
             </td>
             <td align="left"><a href="logout.php?uid=<?=$_GET[uid]?>"><img border="0" src="gfx/exit.JPG" height="50px" width="100px"></a></td>
