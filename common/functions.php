@@ -1,4 +1,4 @@
-<?  include 'functions-conversion.php';include 'functions-database.php';include 'functions-design.php';include 'functions-search.php';include 'functions-email.php';include 'functions-calendar.php';include 'functions-compression.php';include 'functions-this2that.php';include 'functions-list.php';include 'functions-ps.php';
+<?PHP  include 'functions-conversion.php';include 'functions-database.php';include 'functions-design.php';include 'functions-search.php';include 'functions-email.php';include 'functions-calendar.php';include 'functions-compression.php';include 'functions-this2that.php';include 'functions-list.php';include 'functions-ps.php';
 function hardLog($str,$type){
 	if ($type == "user"){
 		$log = "/logs/user.log";
