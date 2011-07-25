@@ -1,4 +1,4 @@
-<? 
+<?PHP 
 header('Location: http://hwestauctions.com');
 include 'common/functions.php';
 mysql_connect();
@@ -15,11 +15,11 @@ a:hover {text-decoration:none; color:#000000; font-weight:bold;}
 }
 td { border-bottom: double 3px #00FF00}
 </style> 
-  <div style="border:ridge 3px #000000; background-color:#cc9900; font-size:20px;" align="center"><a href="http://mdwestserve.com/portal/search.php?uid=<?=$_GET[uid];?>&q=<?=$_GET[q];?>&field=<?=$_GET[field];?>" style="text-decoration:none; color:#000000;">Click Here To Search Process Service Data</a></div>
+
 
 <table width="100%" align="center" cellpadding="0px" cellspacing="0px"><tr><td valign="top"  bgcolor="#FFFFFF" style="padding-left:5px;padding-right:5px; border:ridge 5px #006699;">
 <center>
-<?
+<?PHP
 include 'menu.php';
 $att_id = $user[attorneys_id];
 if ($_GET[q]){
@@ -30,7 +30,7 @@ td	{text-align:center; border-bottom: solid 1px #99cc33; padding:3px;}
 </style>
 
 <table width="100%"  align="center" style="border-collapse:collapse" cellpadding="0" cellspacing="0" border="0">
-<? // DATE_FORMAT(sale_date,'%l:%i%p') as sale_date_f 
+<?PHP // DATE_FORMAT(sale_date,'%l:%i%p') as sale_date_f 
 $i=0;
 mysql_select_db ('intranet');
 $qdate = $year.'-'.$month.'-'.$day;
