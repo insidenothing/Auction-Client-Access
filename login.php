@@ -19,7 +19,7 @@ if ((isset($_POST['email']) && $_POST['password']) || (isset($_GET['email']) && 
 
 hardLog(id2attorneys($user['attorneys_id']).'] ['.$user['name'].' Loaded '.$_SERVER['PHP_SELF'].'+'.$_SERVER['QUERY_STRING' ],'client');
 
-		header ('Location: desktop.php?uid='.$uid);
+		header ('Location: desktop.php');
 	} else {
 		mysql_select_db ('intranet');
 		portal_log("Attempted Login by $email using $pass", 0);
