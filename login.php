@@ -19,6 +19,7 @@ if ((isset($_POST['email']) && $_POST['password']) || (isset($_GET['email']) && 
 			setcookie ("psportal[contact_id]", $data['contact_id'], $inTwoHours, "/", ".hwestauctions.com");
 			setcookie ("psportal[attorneys_id]", $data['attorneys_id'], $inTwoHours, "/", ".hwestauctions.com");
 			setcookie ("psportal[name]", $data['name'], $inTwoHours, "/", ".hwestauctions.com");
+			setcookie ("psportal[user_admin]", $data['user_admin'], $inTwoHours, "/", ".hwestauctions.com");
 			setcookie ("psportal[email]", $data['email'], $inTwoHours, "/", ".hwestauctions.com");
 			setcookie ("psportal[debug]", date('h:iA n/j/y')." $user logged in using ".$_SERVER["REMOTE_ADDR"], $inTwoHours, "/", ".hwestauctions.com");
 
