@@ -1,10 +1,9 @@
 <?PHP 
-header('Location: http://hwestauctions.com');
 include 'common/functions.php';
 mysql_connect();
 mysql_select_db('intranet');
 include 'security.php';
-onlinePortal($user[contact_id]);
+onlinePortal($user['contact_id']);
 ?>
 <style>
 body {margin:0px; padding:0px; background-color:#0066FF;}
@@ -34,7 +33,7 @@ td	{text-align:center; border-bottom: solid 1px #99cc33; padding:3px;}
 $i=0;
 mysql_select_db ('intranet');
 $qdate = $year.'-'.$month.'-'.$day;
-hardLog(id2attorneys($user[attorneys_id]).'] ['.$user[name].' Searching '.$_GET[field].' for '.$q.'] ['.$_GET[resolution],'client');
+hardLog(id2attorneys($user['attorneys_id']).'] ['.$user['name'].' Searching '.$_GET['field'].' for '.$q.'] ['.$_GET['resolution'],'client');
 
 if ($_GET[field] == 'an'){
 	$q1 = "SELECT * FROM schedule_items WHERE attorneys_id = '$att_id' AND schedule_id like '%$q%' ORDER BY sale_date, sort_time";
