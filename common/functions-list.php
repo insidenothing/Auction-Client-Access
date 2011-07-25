@@ -1,4 +1,4 @@
-<?
+<?PHP
 
 function pageList($current){
 	$q2 = "select * from core_pages where php = '$current'";
