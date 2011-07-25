@@ -8,7 +8,7 @@ function mkPass(){
 	return rand(1000,9999);
 }
 
-if ($_POST['email']){
+if (isset($_POST['email'])){
 	$email = $_POST['email'];
 	$pass = mkPass();
 	mysql_select_db('intranet');
@@ -36,7 +36,7 @@ if ($_POST['email']){
 			$headers .= "Bcc: Account Archive <mdwestserve@gmail.com> \n";
 			mail($email,$subject,$body,$headers);
 		$status = "Your New Password Was Sent To $_POST[email]";
-		$status .= "<script>window.location.href='http://mdwestserve.com/replication/intranet.php';</script>";
+		$status .= "<script>window.location.href='http://hwestauctions.com/intranet.php';</script>";
 	}else{
 		$status = "$_POST[email] Not Found, Contact service@mdwestserve.com For Help";
 	}
@@ -63,7 +63,7 @@ if (isset($status)){
 
 
 
-<br /><br /><center><a href="http://mdwestserve.com">LOG IN HERE</a></center>
+<br /><br /><center><a href="http://portal.hwestauctions.com/login.php">LOG IN HERE</a></center>
 
 <?PHP
 include 'footer.php';
