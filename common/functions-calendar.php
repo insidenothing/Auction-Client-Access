@@ -1,4 +1,4 @@
-<?
+<?PHP
 // These functions will prevent error dates by removing key input
 function mkmonth($keep){
 	//if (!$keep){$keep = date('M');}
