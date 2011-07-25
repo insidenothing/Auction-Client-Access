@@ -32,7 +32,6 @@ td	{text-align:center; border-bottom: solid 1px #99cc33; padding:3px;}
 <?PHP // DATE_FORMAT(sale_date,'%l:%i%p') as sale_date_f 
 $i=0;
 mysql_select_db ('intranet');
-$qdate = $year.'-'.$month.'-'.$day;
 hardLog(id2attorneys($user['attorneys_id']).'] ['.$user['name'].' Searching '.$_GET['field'].' for '.$q.'] ['.$_GET['resolution'],'client');
 
 if ($_GET['field'] == 'an'){
