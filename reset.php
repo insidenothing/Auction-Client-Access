@@ -22,7 +22,7 @@ if (isset($_POST['email'])){
 	portal_log("(LOCAL)Password reset for $email", $data['contact_id']);
 
 	$body = "Harvey West Auctioneers password has arrived!<br>
-			You can log in at http://poeral.hwestauctions.com/login.php<br>
+			You can log in at http://portal.hwestauctions.com/login.php<br><br>
 			E-Mail Address: $email<br>
 			Password: $pass<br><br>
 			
