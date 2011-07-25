@@ -1,4 +1,4 @@
-<?
+<?PHP
 
 function getLnL($address){
 $address = str_replace(' ','+',$address);
