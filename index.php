@@ -1,9 +1,5 @@
 <?PHP
-include security.php
-
-header('Location: desktop.php');
 include 'header.php';
-
 ?>
 
 <div style="font-size:20px; padding:5px;">
