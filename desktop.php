@@ -33,9 +33,9 @@ fieldset, legend {border:none; padding:5px;; font-size:20px;}
 <table align="center" width="100%"><tr><td valign="top" width="99%">
 <fieldset>
 	<legend><?PHP echo $user['name']?>'s Auction Desktop</legend>
-		<li><a href="dailyInvoices.php?uid=<?PHP echo $_GET['uid']?>">Daily Invoice Lists</a> <small>[added 4/16/2009]</small></li>
+		<li><a href="dailyInvoices.php">Daily Invoice Lists</a> <small>[added 4/16/2009]</small></li>
 
-		<?PHP if ($user[attorneys_id] == "1"){?>
+		<?PHP if ($user['attorneys_id'] == "1"){?>
 			<li><a href="csvtesting.php">Test Exported CSV against Harvey West Database</a></li>
 			<li><a href="upload-burson.php">Place Order for Auction</a></li>
 		<?PHP }else{?> 
@@ -47,7 +47,7 @@ fieldset, legend {border:none; padding:5px;; font-size:20px;}
 			<li><a href="settings.php">Client Options</a></li>
 		<?PHP } ?>
 		<li><a href="deadlines.php">New Auction Deadlines</a></li> 
-		<?PHP if ($user[attorneys_id] == '21'){?>
+		<?PHP if ($user['attorneys_id'] == '21'){?>
 			<li><a href="report-draper-md.php">MD Print Cost</a></li>
 			<li><a href="report-draper-dc.php">DC Print Cost</a></li>       
 		<?PHP }?>
