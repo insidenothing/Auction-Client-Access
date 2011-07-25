@@ -13,13 +13,17 @@ if ((isset($_POST['email']) && $_POST['password']) || (isset($_GET['email']) && 
 	if ($data = mysql_fetch_array($r1, MYSQL_ASSOC)){
 		$uid = uid($email,$pass);
 		$ip=$_SERVER['REMOTE_ADDR'];
-		@mysql_query("UPDATE contacts SET uid='$uid', uid_date=NOW(), uid_ip='$ip' WHERE email = '$email'");
-		mysql_select_db ('intranet');
+
+
+                        setcookie ("override", "datalink", $inTwoHours, "/", ".hwestauctions.com");
+			setcookie ("psportal[contact_id]", $data['contact_id'], $inTwoHours, "/", ".hwestauctions.com");
+			setcookie ("psportal[attorneys_id]", $data['attorneys_id'], $inTwoHours, "/", ".hwestauctions.com");
+			setcookie ("psportal[name]", $data['name'], $inTwoHours, "/", ".hwestauctions.com");
+			setcookie ("psportal[email]", $data['email'], $inTwoHours, "/", ".hwestauctions.com");
+			setcookie ("psportal[debug]", date('h:iA n/j/y')." $user logged in using ".$_SERVER["REMOTE_ADDR"], $inTwoHours, "/", ".hwestauctions.com");
+
 		portal_log("$data[name] Logged In ($uid)", $data[contact_id]);
-
-hardLog(id2attorneys($user['attorneys_id']).'] ['.$user['name'].' Loaded '.$_SERVER['PHP_SELF'].'+'.$_SERVER['QUERY_STRING' ],'client');
-
-		header ('Location: desktop.php');
+   	        header ('Location: desktop.php');
 	} else {
 		mysql_select_db ('intranet');
 		portal_log("Attempted Login by $email using $pass", 0);
