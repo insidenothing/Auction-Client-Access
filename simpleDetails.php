@@ -1,4 +1,4 @@
-<?
+<?PHP
 include 'header.php';
 mysql_select_db ('intranet');
 $q = "SELECT *, DATE_FORMAT(item_datetime,'%M %D, $Y at %l:%i%p') as item_datetime_f, DATE_FORMAT(item_date,'%M %D, $Y at %l:%i%p') as item_date_f, DATE_FORMAT(update_date,'%M %D, $Y at %l:%i%p') as update_date_f FROM schedule_items WHERE schedule_id = '$_GET[id]'";		
@@ -17,15 +17,15 @@ function washAdURI($uri){
 	<tr>
 		<td valign="top">
 <pre>
-Status: <?=$data[item_status]?>
+Status: <?PHP echo $data[item_status]?>
 
-Auction: <?=$data[schedule_id]?>
+Auction: <?PHP echo $data[schedule_id]?>
 
-File: <?=$data[file]?>
+File: <?PHP echo $data[file]?>
 
-Sale: <?=$data[sale_date]?> at <?=$data[sale_time]?>
+Sale: <?PHP echo $data[sale_date]?> at <?PHP echo $data[sale_time]?>
 
-<? if ($data[pending_cancel] == "0" && $data[item_status] == "ON SCHEDULE"){
+<?PHP if ($data[pending_cancel] == "0" && $data[item_status] == "ON SCHEDULE"){
 	echo "<a href='cancel.php?id=$data[schedule_id]&uid=$_GET[uid]'><font size='+2'>Request Auction Cancellation</font></a>
 	";
 } 
@@ -34,27 +34,27 @@ if ($data[pending_cancel] == "1" && $data[item_status] == "ON SCHEDULE"){
 	";
 }
 ?>
-Property: <?=$data[address1]?>
+Property: <?PHP echo $data[address1]?>
 
-<a href="invoice.php?uid=<?=$_GET[uid]?>&auction=<?=$data[schedule_id]?>">Invoice</a>
-<? $r67 = @mysql_query("select * from AVC where auction_id = '$_GET[id]' order by ad_id DESC");
+<a href="invoice.php?uid=<?PHP echo $_GET[uid]?>&auction=<?PHP echo $data[schedule_id]?>">Invoice</a>
+<?PHP $r67 = @mysql_query("select * from AVC where auction_id = '$_GET[id]' order by ad_id DESC");
 $d67 = mysql_fetch_array($r67,MYSQL_ASSOC); if ($d67[uri]){?>
 
-<a href="<?=washAdURI($d67[uri]);?>" target="_Blank">Current Ad in PDF Form</a> 
+<a href="<?PHP echo washAdURI($d67[uri]);?>" target="_Blank">Current Ad in PDF Form</a> 
 (right click above link 'save link as' to download)
-<? } ?>
+<?PHP } ?>
 </pre>
 </td><td valign="top">
 <pre>
 Access Log
-<? 
+<?PHP 
 mysql_select_db ('intranet');
 $qn="SELECT *, DATE_FORMAT(stamp_date,'%b %e %h:%i%p') as stamp_date_f FROM portal_views WHERE auction_id = '$_GET[id]' order by stamp_date DESC";
 $rn=@mysql_query($qn);
 while ($dn=mysql_fetch_array($rn, MYSQL_ASSOC)){?>
-<?=$dn[stamp_date_f];?>: <?=id2contact($dn[user_id]);?>
+<?PHP echo $dn[stamp_date_f];?>: <?PHP echo id2contact($dn[user_id]);?>
 
-<? } ?>
+<?PHP } ?>
 </pre>
 </td></tr></table>
-<? include 'footer.php'; ?>
+<?PHP include 'footer.php'; ?>
