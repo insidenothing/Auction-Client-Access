@@ -21,15 +21,14 @@ $q="SELECT * FROM users WHERE online_now > '$back'  ORDER BY name";
 $r=@mysql_query($q) or die(mysql_error);
 while ($d=mysql_fetch_array($r, MYSQL_ASSOC)){
 ?>
-<?PHP echo strtoupper(id2contact($d[contact_id]))?>,  
-<?PHP }/* disabled for performance
+<?PHP echo strtoupper(id2contact($d['contact_id']))?>,  
+<?PHP }
 ?>
 <br />
 <script language="JavaScript" src="http://j.maxmind.com/app/geoip.js"></script>
 Local: <script language="JavaScript">document.write(geoip_city());</script>, <script language="JavaScript">document.write(geoip_region());</script>, <script language="JavaScript">document.write(geoip_country_name());</script>
 <br />
-<iframe src="pulse.php?uid=<?PHP echo $_GET[uid]?>" height="15px" frameborder="0"></iframe>
-*/?></div>
+</div>
 </div>
 <style>
 table {
@@ -39,12 +38,3 @@ table {
 </style>	
 </td></tr>
 </table>
-<script type="text/javascript">
-var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
-document.write(unescape("%3Cscript src='http://www.google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
-</script>
-<script type="text/javascript">
-try {
-var pageTracker = _gat._getTracker("UA-1163096-8");
-pageTracker._trackPageview();
-} catch(err) {}</script>
