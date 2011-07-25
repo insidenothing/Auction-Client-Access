@@ -1,4 +1,4 @@
-<?
+<?PHP
 function reportError($page, $error){
 	$body = "Page: $page<br>
 	Error: $error
