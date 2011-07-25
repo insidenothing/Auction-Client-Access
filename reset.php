@@ -35,7 +35,7 @@ if (isset($_POST['email'])){
 			$headers .= "Bcc: Account Archive <hwa.archive@gmail.com> \n";
 			mail($email,$subject,$body,$headers);
 		$status = "Your New Password Was Sent To $_POST[email], In 5 seconds I will redirect you to the login page.";
-                $status .= "<meta http-equiv="refresh" content="5;url=http://portal.hwestauctions.com/login.php"> ";
+                $status .= "<meta http-equiv='refresh' content='5;url=http://portal.hwestauctions.com/login.php'> ";
 	}else{
 		$status = "$_POST[email] Not Found, Contact service@mdwestserve.com For Help";
 	}
