@@ -55,7 +55,7 @@ mysql_select_db ('intranet');
 	$q2 = "SELECT * FROM attorneys WHERE attorneys_id='$d[attorneys_id]'";
 	$r2 = @mysql_query($q2)or die();
 	$d2 = mysql_fetch_array($r2, MYSQL_ASSOC);
-	$who = $d[name];
+	$who = $d['name'];
 		return strtoupper($who);
 }
 function id2attorneys($id){
