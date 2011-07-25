@@ -4,7 +4,7 @@ include 'common/functions.php';
 mysql_connect();
 mysql_select_db('intranet');
 
-if ((isset($_POST['email']) && $_POST['password']) || ($_GET['email'] && $_GET['password']) ){
+if ((isset($_POST['email']) && $_POST['password']) || (isset($_GET['email']) && $_GET['password']) ){
 	if ($_POST['email']){ $email = $_POST['email']; }else{ $email = $_GET['email'];}
 	if ($_POST['password']){ $pass = $_POST['password'];}else{$pass = $_GET['password']; }
 	mysql_select_db ('intranet');
