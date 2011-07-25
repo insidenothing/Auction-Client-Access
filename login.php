@@ -4,9 +4,9 @@ include 'common/functions.php';
 mysql_connect();
 mysql_select_db('intranet');
 
-if (($_POST[email] && $_POST[password]) || ($_GET[email] && $_GET[password]) ){
-	if ($_POST[email]){ $email = $_POST[email]; }else{ $email = $_GET[email];}
-	if ($_POST[password]){ $pass = $_POST[password];}else{$pass = $_GET[password]; }
+if (($_POST['email'] && $_POST['password']) || ($_GET['email'] && $_GET['password']) ){
+	if ($_POST['email']){ $email = $_POST['email']; }else{ $email = $_GET['email'];}
+	if ($_POST['password']){ $pass = $_POST['password'];}else{$pass = $_GET['password']; }
 	mysql_select_db ('intranet');
 	$q1 = "SELECT * FROM contacts WHERE email = '$email' AND password = '$pass'";		
 	$r1 = @mysql_query ($q1) or die(mysql_error());
@@ -17,7 +17,7 @@ if (($_POST[email] && $_POST[password]) || ($_GET[email] && $_GET[password]) ){
 		mysql_select_db ('intranet');
 		portal_log("$data[name] Logged In ($uid)", $data[contact_id]);
 
-hardLog(id2attorneys($user[attorneys_id]).'] ['.$user[name].' Loaded '.$_SERVER[PHP_SELF].'+'.$_SERVER[QUERY_STRING ],'client');
+hardLog(id2attorneys($user['attorneys_id']).'] ['.$user['name'].' Loaded '.$_SERVER['PHP_SELF'].'+'.$_SERVER['QUERY_STRING' ],'client');
 
 		header ('Location: desktop.php?uid='.$uid);
 	} else {
@@ -62,8 +62,8 @@ include 'footer.php';
 ?>
 <center>
 <?PHP
-if ($_COOKIE[test]){
-echo $_COOKIE[test];
+if ($_COOKIE['test']){
+echo $_COOKIE['test'];
 }else{
 echo "Cookies Disabled";
 error_out('Cookies Disabled');
