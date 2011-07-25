@@ -3,7 +3,7 @@ function paper2contact($id){
 	$q = "select name from paper_contacts where contact_id='$id'";
 	$r = @mysql_query($q);
 	$d = mysql_fetch_array($r, MYSQL_ASSOC);
-	if ($d[name]){
+	if (isset($d['name'])){
 		$ret = $d[name];
 	}else{
 		$ret = knownip($id);
@@ -15,36 +15,36 @@ function contact2attorney($id){
 	$q = "select attorneys_id from contacts where contact_id='$id'";
 	$r = @mysql_query($q);
 	$d = mysql_fetch_array($r, MYSQL_ASSOC);
-	$q = "select display_name from attorneys where attorneys_id='$d[attorneys_id]'";
+	$q = "select display_name from attorneys where attorneys_id='".$d['attorneys_id']."'";
 	$r = @mysql_query($q);
 	$d = mysql_fetch_array($r, MYSQL_ASSOC);
-	return $d[display_name];
+	return $d['display_name'];
 }
 
 function notary2name($notary_exp){
 	$q = "select name from users where notary='$notary_exp'";
 	$r = @mysql_query($q);
 	$d = mysql_fetch_array($r, MYSQL_ASSOC);
-	return $d[name];
+	return $d['name'];
 }
 function id2name($id){
 	$q = "select name from users where user_id='$id'";
 	$r = @mysql_query($q);
 	$d = mysql_fetch_array($r, MYSQL_ASSOC);
-	if ($id=='0'){ $d[name] = "- - -";}
-	return $d[name];
+	if ($id=='0'){ $d['name'] = "- - -";}
+	return $d['name'];
 }
 function id2tag($id){
 	$q = "select tag from users where user_id='$id'";
 	$r = @mysql_query($q);
 	$d = mysql_fetch_array($r, MYSQL_ASSOC);
-	return $d[tag];
+	return $d['tag'];
 }
 function id2auctioneer($id){
 	$q = "select auctioneer from auctioneers where auctioneer_id='$id'";
 	$r = @mysql_query($q);
 	$d = mysql_fetch_array($r, MYSQL_ASSOC);
-	return $d[auctioneer];
+	return $d['auctioneer'];
 }
 
 function id2contact($id){
