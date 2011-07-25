@@ -1,4 +1,4 @@
-<?
+<?PHP
 if(!$_COOKIE[psportal][debug]){
 
 if (!$_GET[uid]){
