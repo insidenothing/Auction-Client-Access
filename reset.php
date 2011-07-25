@@ -1,4 +1,4 @@
-<?
+<?PHP
 //this file will set a user's password and e-mail it to them. will also work for forgotten passwords
 include 'common/functions.php';
 mysql_connect();
@@ -44,8 +44,8 @@ if ($_POST[email]){
 }
 if ($status){
 ?>
-<h1 align="center"><?=$status?></h1>
-<? }?>
+<h1 align="center"><?PHP echo $status?></h1>
+<?PHP }?>
 <div align="center" style="font-size:20px">Please enter your email address below to have your new password sent.</div> 
 <br /><br />
 <form method="post">
@@ -65,6 +65,6 @@ if ($status){
 
 <br /><br /><center><a href="http://mdwestserve.com">LOG IN HERE</a></center>
 
-<?
+<?PHP
 include 'footer.php';
 ?>
