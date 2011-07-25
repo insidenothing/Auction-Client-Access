@@ -1,4 +1,4 @@
-<?
+<?PHP
 /* List of Functions
 l2rDate - Convert linux date to read date (2007-03-24 to 3/24/2007)
 start2run - Echo out the run dates based on the first ad start date
