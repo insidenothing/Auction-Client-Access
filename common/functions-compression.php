@@ -1,4 +1,4 @@
-<?
+<?PHP
 
 function print_gzipped_page() {
 
