@@ -1,4 +1,4 @@
-<?
+<?PHP
 function db_connect($host,$database,$user,$password){
 	$step1 = @mysql_connect ('hwa1.hwestauctions.com', $user, $password);
 	$step2 = mysql_select_db ($database);
