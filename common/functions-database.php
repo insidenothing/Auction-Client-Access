@@ -58,16 +58,16 @@ function setLocation($str){
 }
 function log_action($user_id,$action){
 	$action = addslashes($action);
-	$ip = $_SERVER[HTTP_X_FORWARDED_FOR];
+	$ip = $_SERVER['HTTP_X_FORWARDED_FOR'];
 	$proxy = $_SERVER['REMOTE_ADDR'];
-	$user_id = $_COOKIE[userdata][user_id];
+	$user_id = $_COOKIE['userdata']['user_id'];
 	$q1 = "INSERT INTO activity_log (user_id, action, action_on, system_ip, system_proxy) VALUES ( '$user_id', '$action', NOW(), '$ip', '$proxy' )";		
 	$r1 = @mysql_query ($q1) or die(mysql_error());
 }
 function portal_log($action,$user_id){
 	$action = addslashes($action);
-	if ($_SERVER[HTTP_X_FORWARDED_FOR]){
-	$ip = $_SERVER[HTTP_X_FORWARDED_FOR];
+	if (isset($_SERVER['HTTP_X_FORWARDED_FOR'])){
+	$ip = $_SERVER['HTTP_X_FORWARDED_FOR'];
 	}else{
 	$ip = $_SERVER['REMOTE_ADDR'];
 	}
