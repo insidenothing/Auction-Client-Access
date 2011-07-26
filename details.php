@@ -1,4 +1,4 @@
-<?
+<?PHP
 include 'header.php';
 mysql_select_db ('intranet');
 
@@ -16,15 +16,15 @@ portal_log("Accessing Details for Auction $data[schedule_id] ($data[address1] : 
 
 
 
-<font size="+2">Auction Scheduled for <?=$data[sale_date]?> at <?=$data[sale_time]?><br />Details for Auction #<?=$data[schedule_id]?> :: <?=$data[item_status]?></font>
-<?
+<font size="+2">Auction Scheduled for <?PHP echo $data[sale_date]?> at <?PHP echo $data[sale_time]?><br />Details for Auction #<?PHP echo $data[schedule_id]?> :: <?PHP echo $data[item_status]?></font>
+<?PHP
 if ($data[pending_cancel] == "0" && $data[item_status] == "ON SCHEDULE"){
 	echo "<div><a href='cancel.php?id=$data[schedule_id]&uid=$_GET[uid]'><font size='+2'>Request Auction Cancellation</font></a></div>";
 }
 ?>
 
 
-<?
+<?PHP
 if ($data[pending_cancel] == "1" && $data[item_status] == "ON SCHEDULE"){
 	echo "<div style='background-color:#FF0000' align='center'><font size='+2'>Auction Pending Cancellation</font></div>";
 }
@@ -32,24 +32,24 @@ if ($data[pending_cancel] == "1" && $data[item_status] == "ON SCHEDULE"){
 <table border="1" width="100%" style="border-collapse:collapse; font-size:24px" cellspacing="0" cellpadding="5">
 	<tr>
     	<td valign="top"><strong>Property Address</strong></td>
-    	<td><?=$data[legal_fault]?><br /><?=$data[address1]?><br /><?=$data[city]?>, <?=$data[state]?> <?=$data[zip]?></td>
+    	<td><?PHP echo $data[legal_fault]?><br /><?PHP echo $data[address1]?><br /><?PHP echo $data[city]?>, <?PHP echo $data[state]?> <?PHP echo $data[zip]?></td>
 	</tr>
 	<tr>
     	<td><strong>Deposit to Bid</strong></td>
-    	<td>$<?=$data[deposit]?>K</td>
+    	<td>$<?PHP echo $data[deposit]?>K</td>
 	</tr>
 	<tr>
     	<td><strong>File #</strong></td>
-    	<td><?=$data[file]?></td>
+    	<td><?PHP echo $data[file]?></td>
 	</tr>
 	<tr>
     	<td valign="top"><strong>Publication Information</strong><br /><small>Primary Publication Only</small></td>
-    	<td>Published in the <?=$data[paper]?>.<br />Starting on <?=$data[ad_start]?> for <?=$data[pub_dates]?>.<br /><? if ($data[pub_cost_flag] == '3' || $data[pub_cost_flag] == ''){ ?>Total Cost: $<?=$data[ad_cost]?> <? }?></td>
+    	<td>Published in the <?PHP echo $data[paper]?>.<br />Starting on <?PHP echo $data[ad_start]?> for <?PHP echo $data[pub_dates]?>.<br /><?PHP if ($data[pub_cost_flag] == '3' || $data[pub_cost_flag] == ''){ ?>Total Cost: $<?PHP echo $data[ad_cost]?> <?PHP }?></td>
 	</tr>
     <tr>
     	<td>Notes:</td>
         <td>
-        <? 
+        <?PHP 
         $qn="SELECT * FROM portal_notes WHERE action_file = '$_GET[id]'";
 		$rn=@mysql_query($qn);
 		while ($dn=mysql_fetch_array($rn, MYSQL_ASSOC)){
@@ -62,19 +62,19 @@ if ($data[pending_cancel] == "1" && $data[item_status] == "ON SCHEDULE"){
     </tr>
 	<tr>
     	<td><strong>Auctioneer Fee</strong></td>
-    	<td><?=$data[auction_fee]?></td>
+    	<td><?PHP echo $data[auction_fee]?></td>
 	</tr>
 	<tr>
     	<td><strong>Invoice</strong></td>
     	<td>
-		 <a href="invoice.php?uid=<?=$_GET[uid]?>&auction=<?=$data[schedule_id]?>">Invoice</a>
+		 <a href="invoice.php?uid=<?PHP echo $_GET[uid]?>&auction=<?PHP echo $data[schedule_id]?>">Invoice</a>
 		 </td>
 	</tr>
     
     <tr bgcolor="00ff00">
     	<td><b>New Ad Version control</b></td>
         <td>
-        <?
+        <?PHP
 
 		
 function washAdURI($uri){
@@ -89,9 +89,9 @@ return $uri;
 while ($d67 = mysql_fetch_array($r67,MYSQL_ASSOC)){
  ?>
 
-<?=$d67[saved_on];?>: <?=id2name($d67[user_id]);?> <a href="<?=washAdURI($d67[uri]);?>" target="_Blank"><small>view</small></a><br />
+<?PHP echo $d67[saved_on];?>: <?PHP echo id2name($d67[user_id]);?> <a href="<?PHP echo washAdURI($d67[uri]);?>" target="_Blank"><small>view</small></a><br />
 
-<? }?>
+<?PHP }?>
         
         
         
@@ -101,12 +101,12 @@ while ($d67 = mysql_fetch_array($r67,MYSQL_ASSOC)){
    </tr>
    <tr>
     	<td><em>Ad Number</em></td>
-        <td><?=$data[ad_number]?></td>
+        <td><?PHP echo $data[ad_number]?></td>
    </tr>
       <tr>
     	<td><strong>Process Server Status</strong></td>
         <td>
-        <?
+        <?PHP
 		mysql_select_db ('core');
 
         $q="SELECT * FROM ps_packets WHERE client_file = '$data[file]'";
@@ -124,15 +124,15 @@ while ($d67 = mysql_fetch_array($r67,MYSQL_ASSOC)){
 </td>
 <td valign="top">
   <h1>Access Log</h1>
-        <? 
+        <?PHP 
 		mysql_select_db ('intranet');
         $qn="SELECT *, DATE_FORMAT(stamp_date,'%b %e %h:%i%p') as stamp_date_f FROM portal_views WHERE auction_id = '$data[schedule_id]' order by stamp_date DESC";
 		$rn=@mysql_query($qn);
 		while ($dn=mysql_fetch_array($rn, MYSQL_ASSOC)){?>
-		<?=$dn[stamp_date_f];?>:  <?=id2contact($dn[user_id]);?><br>
-		<? } ?>
+		<?PHP echo $dn[stamp_date_f];?>:  <?PHP echo id2contact($dn[user_id]);?><br>
+		<?PHP } ?>
 </td></tr></table>
-<?
+<?PHP
 
 include 'footer.php';
 ?>
