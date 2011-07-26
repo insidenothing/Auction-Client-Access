@@ -1,4 +1,4 @@
-<?
+<?PHP
 include_once '../common/functions.php';
 mysql_connect();
 mysql_select_db('intranet');
@@ -39,31 +39,31 @@ $r=@mysql_query($q) or die(mysql_error());
 
 
 <table style="position:absolute; top:0px; left:0px;" border="1" width="100%">
-<? while ($d=mysql_fetch_array($r, MYSQL_ASSOC)){?>
-	<tr bgcolor="<?=row_color_light($i++)?>">
-		<td width="150px" nowrap="nowrap" valign="top"><?=id2contact($d[from_id])?>:</td>
-        <td valign="top"><?=stripslashes($d[message])?></td>
+<?PHP while ($d=mysql_fetch_array($r, MYSQL_ASSOC)){?>
+	<tr bgcolor="<?PHP echo row_color_light($i++)?>">
+		<td width="150px" nowrap="nowrap" valign="top"><?PHP echo id2contact($d[from_id])?>:</td>
+        <td valign="top"><?PHP echo stripslashes($d[message])?></td>
     </tr>
-<? } ?>
+<?PHP } ?>
     <form method="post">
-    <input name="from_id" value="<?=$user[contact_id]?>" type="hidden">
-    <input name="to_id" value="<?=$_GET[to]?>" type="hidden">
+    <input name="from_id" value="<?PHP echo $user[contact_id]?>" type="hidden">
+    <input name="to_id" value="<?PHP echo $_GET[to]?>" type="hidden">
     <tr bgcolor="#003399">
     	<td colspan="2" height="30px" align="center"><input name="message" size="58"><input type="submit" value="Send" /></td>
     </tr>	
 	</form> 
 	<tr>
-    	<td colspan="2"><center><a href="index.php?uid=<?=$_GET[uid]?>">HOME</a></center></td>
+    	<td colspan="2"><center><a href="index.php?uid=<?PHP echo $_GET[uid]?>">HOME</a></center></td>
     </tr>
        
 </table>
-<script>document.title = "From: <?=id2contact($user[contact_id])?> To: <?=id2contact($_GET[to])?>";</script>
+<script>document.title = "From: <?PHP echo id2contact($user[contact_id])?> To: <?PHP echo id2contact($_GET[to])?>";</script>
 
-<?
+<?PHP
 if ($_GET['new'] && $_POST[message]){
 ?>
-<script>location.href='index.php?uid=<?=$_GET[uid]?>';</script>
-<?
+<script>location.href='index.php?uid=<?PHP echo $_GET[uid]?>';</script>
+<?PHP
 }
 
 ?>
