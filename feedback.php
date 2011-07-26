@@ -1,4 +1,4 @@
-<?
+<?PHP
 include 'header.php';
 
 if ($_POST[submit]){
@@ -19,8 +19,8 @@ echo "<h3 align='center'>Thank you, your message has been sent.</h3>";
 
 
 <form method="post">
-<input type="hidden" name="name" value="<?=$_COOKIE[psdata][name]?>">
-<input type="hidden" name="email" value="<?=$_COOKIE[psdata][email]?>">
+<input type="hidden" name="name" value="<?PHP echo $_COOKIE[psdata][name]?>">
+<input type="hidden" name="email" value="<?PHP echo $_COOKIE[psdata][email]?>">
 <table align="center">
 	<tr>
 		<td>To:</td>
@@ -28,7 +28,7 @@ echo "<h3 align='center'>Thank you, your message has been sent.</h3>";
 	</tr>		
 	<tr>
 		<td>From:</td>
-		<td><strong><em><?=$_COOKIE[psdata][name]?> &lt;<?=$_COOKIE[psdata][email]?>&gt;</em></strong></td>
+		<td><strong><em><?PHP echo $_COOKIE[psdata][name]?> &lt;<?PHP echo $_COOKIE[psdata][email]?>&gt;</em></strong></td>
 	</tr>		
 	<tr>
 		<td>Subject:</td>
@@ -43,6 +43,6 @@ echo "<h3 align='center'>Thank you, your message has been sent.</h3>";
 </table>
 
 
-<?
+<?PHP
 include 'footer.php';
 ?>
