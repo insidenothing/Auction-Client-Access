@@ -1,4 +1,4 @@
-<?
+<?PHP
 //this file will delete a user
 include '../common/functions.php';
 mysql_connect();
