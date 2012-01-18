@@ -44,7 +44,13 @@ if ($data[pending_cancel] == "0" && $data[item_status] == "ON SCHEDULE"){
 	</tr>
 	<tr>
     	<td colspan="2">
-		
+		Online File Storage<br>
+			<?PHP
+			$rfi = @mysql_query("select * from scans where auction = '$data[schedule_id]' order by id desc limit 0,1 ");
+			while ($dfi = mysql_fetch_array($rfi,MYSQL_ASSOC)){
+				echo "<li><a href='$dfi[scan]' target='_Blank'>$dfi[method] ".id2name($dfi[userID])."</a></li>";
+			}
+	?>
 			<table width="100%" cellpadding="0" cellspacing="0" bgcolor="#99CCFF" border="1">
 		<tr>
 			<td bgcolor="#FFFF99">Final Invoices</td>
