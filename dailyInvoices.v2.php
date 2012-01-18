@@ -40,7 +40,7 @@ Invoices Generated For
 .
 <?PHP
 $r = @mysql_query("select * from AIVC where genDate = '$_GET[genDate]' and attid = '$user[attorneys_id]'");
-$r2 = @mysql_query("select * from scans where uploadDate = '$_GET[genDate]' and attid = '$user[attorneys_id]'");
+$r2 = @mysql_query("select * from scans, schedule_items where scans.uploadDate = '$_GET[genDate]' and scans.auction = schedule_items.schedule_id and schedule_items.attorneys_id = '$user[attorneys_id]'");
 ?>
 <table width="100%" border='1' cellpadding='2'>
 	<tr>
