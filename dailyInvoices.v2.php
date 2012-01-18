@@ -13,6 +13,10 @@ while ($dloop = mysql_fetch_array($r,MYSQL_ASSOC)){
 */
 
 
+$r=@mysql_query("select distinct uploadDate from scans where uploadDate <> '0000-00-00' and attid = '$user[attorneys_id]' order by uploadDate DESC");
+while ($dloop = mysql_fetch_array($r,MYSQL_ASSOC)){
+	$options .= "<option>$dloop[uploadDate]</option>";
+}
 
 $r=@mysql_query("select distinct genDate from AIVC where genDate <> '0000-00-00' and attid = '$user[attorneys_id]' order by genDate DESC");
 while ($dloop = mysql_fetch_array($r,MYSQL_ASSOC)){
@@ -26,29 +30,35 @@ $options .= "<option>$dloop[genDate]</option>";
 </form>
  <?PHP if ($_GET[genDate]){?>
  <br>Invoices Generated For <?PHP echo $_GET[genDate];?>.
-<?PHP $r = @mysql_query("select * from AIVC where genDate = '$_GET[genDate]' and attid = '$user[attorneys_id]'");?>
+<?PHP 
+$r = @mysql_query("select * from AIVC where genDate = '$_GET[genDate]' and attid = '$user[attorneys_id]'");
+$r2 = @mysql_query("select * from scans where uploadDate = '$_GET[genDate]' and attid = '$user[attorneys_id]'");
+?>
 <table width="100%" border='1' cellpadding='2'>
 	<tr>
 		<td align="center">Date Generated</td>
 		<td align="center">HWA Auction ID</td>
 		<td align="center">Invoice Control Link</td>
 	</tr>
-<?PHP while ($d=mysql_fetch_array($r,MYSQL_ASSOC)){ if ($d[url]){?>
-	<tr>
-		<td align="center"><?PHP echo $d[stored]?></td>
-		<td align="center"><?PHP echo $d[auctionID]?></td>
-		<td align="center"><a href="<?PHP echo $d[url]?>" target='_Blank'>PDF INVOICE</a></td>
-	</tr>
-<?PHP }}?>
+	<?PHP while ($d=mysql_fetch_array($r,MYSQL_ASSOC)){ if ($d[url]){?>
+		<tr>
+			<td align="center"><?PHP echo $d[stored]?></td>
+			<td align="center"><?PHP echo $d[auctionID]?></td>
+			<td align="center"><a href="<?PHP echo $d[url]?>" target='_Blank'>PDF INVOICE</a></td>
+		</tr>
+	<?PHP } ?>
+	<?PHP while ($d2=mysql_fetch_array($r2,MYSQL_ASSOC)){ if ($d2[scan]){?>
+		<tr>
+			<td align="center"><?PHP echo $d2[uploadDate]?></td>
+			<td align="center"><?PHP echo $d2[auction]?></td>
+			<td align="center"><a href="<?PHP echo $d2[scan]?>" target='_Blank'>PDF INVOICE</a></td>
+		</tr>
+	<?PHP } ?>
+		
+<?php } ?>
 </table>
 <?PHP } // end test for _GET[genDate] from line 10 
-?> <div> <?php 
-$r=@mysql_query("select distinct genDate from AIVC where genDate <> '0000-00-00' and attid = '$user[attorneys_id]' order by genDate DESC");
-while ($dloop = mysql_fetch_array($r,MYSQL_ASSOC)){
-	echo "<a href='?genDate=$dloop[genDate]'>$dloop[genDate] &nbsp;</a>";
-}
-
-?></div> 
+?> 
 <?PHP
 include 'footer.v2.php';
 ?>
