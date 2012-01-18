@@ -57,7 +57,7 @@ $r2 = @mysql_query("select * from scans where uploadDate = '$_GET[genDate]' and 
 		
 
 </table>
-<?PHP } // end test for _GET[genDate] from line 10 
+<?PHP } } // end test for _GET[genDate] from line 10 
 ?> 
 <?PHP
 include 'footer.v2.php';
