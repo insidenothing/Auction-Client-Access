@@ -19,7 +19,13 @@ while ($dloop = mysql_fetch_array($r,MYSQL_ASSOC)){
 $options .= "<option>$dloop[genDate]</option>";
 }
 ?>
-<form id="form"><input name="uid" value="<?PHP echo $_GET[uid];?>" type="hidden"><select name="genDate" onChange="form.submit()"><option>Select New Date</option><?PHP echo $options;?></select> <?PHP if ($_GET[genDate]){?><br>Invoices Generated For <?PHP echo $_GET[genDate];?>.</form>
+<form id="form">
+<select name="genDate" onChange="form.submit()">
+<option>Select New Date</option>
+<?PHP echo $options;?></select>
+</form>
+ <?PHP if ($_GET[genDate]){?>
+ <br>Invoices Generated For <?PHP echo $_GET[genDate];?>.
 <?PHP $r = @mysql_query("select * from AIVC where genDate = '$_GET[genDate]' and attid = '$user[attorneys_id]'");?>
 <table width="100%" border='1' cellpadding='2'>
 	<tr>
@@ -35,7 +41,14 @@ $options .= "<option>$dloop[genDate]</option>";
 	</tr>
 <?PHP }}?>
 </table>
-<?PHP } // end test for _GET[genDate] from line 10 ?>
+<?PHP } // end test for _GET[genDate] from line 10 
+?> <div> <?php 
+$r=@mysql_query("select distinct genDate from AIVC where genDate <> '0000-00-00' and attid = '$user[attorneys_id]' order by genDate DESC");
+while ($dloop = mysql_fetch_array($r,MYSQL_ASSOC)){
+	echo "<a href='?genDate=$dloop[genDate]'>$dloop[genDate] &nbsp;</a>";
+}
+
+?></div> 
 <?PHP
 include 'footer.v2.php';
 ?>
