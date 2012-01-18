@@ -28,7 +28,7 @@ $options .= "<option>$dloop[genDate]</option>";
 <option>Select New Date</option>
 <?PHP echo $options;?></select>
 </form>
- <?PHP if ($_GET[genDate]){ >
+ <?PHP if ($_GET[genDate]){ ?>
  <br>Invoices Generated For <?PHP echo $_GET[genDate];?>.
 <?PHP 
 $r = @mysql_query("select * from AIVC where genDate = '$_GET[genDate]' and attid = '$user[attorneys_id]'");
