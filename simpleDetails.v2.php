@@ -46,7 +46,7 @@ $d67 = mysql_fetch_array($r67,MYSQL_ASSOC); if ($d67[uri]){?>
 	
 Online File Storage<br>
 			<?PHP
-			$rfi = @mysql_query("select * from scans where auction = '$data[schedule_id]' ");
+			$rfi = @mysql_query("select * from scans where auction = '$data[schedule_id]' order by id desc limit 0,1 ");
 			while ($dfi = mysql_fetch_array($rfi,MYSQL_ASSOC)){
 				echo "<li><a href='$dfi[scan]' target='_Blank'>$dfi[method] ".id2name($dfi[userID])."</a></li>";
 			}
