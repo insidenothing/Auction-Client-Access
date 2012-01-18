@@ -50,7 +50,7 @@ Online File Storage<br>
 			while ($dfi = mysql_fetch_array($rfi,MYSQL_ASSOC)){
 				echo "<li><a href='$dfi[scan]' target='_Blank'>$dfi[method] ".id2name($dfi[userID])."</a></li>";
 			}
-	
+	?>
 	
 	<table width="100%" cellpadding="0" cellspacing="0" bgcolor="#99CCFF" border="1">
 		<tr>
