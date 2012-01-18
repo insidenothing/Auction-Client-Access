@@ -1,13 +1,6 @@
 <?PHP
 include 'header.php';
 $options = '';
-
-
-
-
-
-
-
 hardLog(id2attorneys($user[attorneys_id]).'] ['.$user[name].' Loaded '.$_SERVER[PHP_SELF].'+'.$_SERVER[QUERY_STRING ],'client');
 $r=@mysql_query("select distinct uploadDate from scans order by uploadDate DESC");
 while ($dloop = mysql_fetch_array($r,MYSQL_ASSOC)){
@@ -15,7 +8,7 @@ while ($dloop = mysql_fetch_array($r,MYSQL_ASSOC)){
 }
 $r=@mysql_query("select distinct genDate from AIVC where genDate <> '0000-00-00' order by genDate DESC");
 while ($dloop = mysql_fetch_array($r,MYSQL_ASSOC)){
-$options .= "<option>$dloop[genDate]</option>";
+//$options .= "<option>$dloop[genDate]</option>";
 }
 ?>
 <center><form id="form"><input name="uid" value="<?PHP echo $_GET[uid];?>" type="hidden"><select <?PHP if (!$_GET[genDate]){?> style="font-size:24px;" <?PHP }?> name="genDate" onChange="form.submit()" ><option>Select Date</option><?PHP echo $options;?></select> <?PHP if ($_GET[genDate]){?><h1>Daily Invoices Generated For <?PHP echo $_GET[genDate];?>.</h1></form></center>
