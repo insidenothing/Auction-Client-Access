@@ -1,7 +1,12 @@
 <?
 if(!$_COOKIE[psportal][debug]){
 
-
+if (!$_GET[uid]){
+if (!$_POST[uid]){
+//portal_log("Security Active :: UID Not Found", 0);
+header ('Location: http://hwestauctions.com');
+}
+}
 if ($_GET[uid]){
 mysql_connect();
 mysql_select_db ('intranet');
@@ -30,7 +35,7 @@ $user = array(
 }
 if (!$user[name]){
 hardLog(' Loaded '.$_SERVER[PHP_SELF].'+'.$_SERVER[QUERY_STRING ],'client');
-header('Location: http://hwestauctions.com?logout=noUSER');
+header('Location: http://hwestauctions.com');
 }
 
 
