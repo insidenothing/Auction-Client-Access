@@ -3,8 +3,8 @@ if(!$_COOKIE[psportal][debug]){
 
 if (!$_GET[uid]){
 if (!$_POST[uid]){
-portal_log("Security Active :: UID Not Found", 0);
-header ('Location: http://hwestauctions.com?logout=noUID');
+//portal_log("Security Active :: UID Not Found", 0);
+header ('Location: http://hwestauctions.com');
 }
 }
 if ($_GET[uid]){
