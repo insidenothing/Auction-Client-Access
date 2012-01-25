@@ -15,7 +15,13 @@ if ($_COOKIE['psportal']['contact_id']){
 
 
 if (!$user[name]){
-	header('Location: http://hwestauctions.com');
+	?>
+	
+	<script>
+	window.open('http://hwestauctions.com/login/dologout','_Parent');
+	</script>
+	
+	<?php 
 }
 
 
