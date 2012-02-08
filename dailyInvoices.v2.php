@@ -46,6 +46,8 @@ $r2 = @mysql_query("select * from scans, schedule_items where scans.uploadDate =
 	<tr>
 		<td align="center">Date Generated</td>
 		<td align="center">HWA Auction ID</td>
+		<td align="center">File Number</td>
+		<td align="center">Pub Dates</td>
 		<td align="center">Invoice Control Link</td>
 	</tr>
 	
@@ -56,6 +58,8 @@ $r2 = @mysql_query("select * from scans, schedule_items where scans.uploadDate =
 		<tr>
 			<td align="center"><?PHP echo $d[stored]?></td>
 			<td align="center"><?PHP echo $d[auctionID]?></td>
+			<td align="center"></td>
+			<td align="center"></td>
 			<td align="center"><a href="<?PHP echo $d[url]?>" target='_Blank'>PDF INVOICE</a></td>
 		</tr>
 	<?PHP } }?>
@@ -63,6 +67,8 @@ $r2 = @mysql_query("select * from scans, schedule_items where scans.uploadDate =
 		<tr>
 			<td align="center"><?PHP echo $d2[uploadDate]?></td>
 			<td align="center"><?PHP echo $d2[auction]?></td>
+			<td align="center"><?PHP echo $d2['file']?></td>
+			<td align="center"><?PHP echo $d2['pub_dates']?></td>
 			<td align="center"><a href="<?PHP echo $d2[scan]?>" target='_Blank'>PDF INVOICE</a></td>
 		</tr>
 	<?PHP } } ?>
