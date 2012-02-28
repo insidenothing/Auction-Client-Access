@@ -185,7 +185,7 @@ function stripEmail($from){
 	$from = str_replace('jshepherd@LOGS.com','',$from);
 	$from = str_replace('cheaslewood@logs.com','',$from);
 	$from = str_replace('mmccombs@LOGS.com','',$from);
-	$from = str_replace('lkennebeck@logs.com','',$from);
+	$from = str_replace('AnThompson@logs.com','',$from);
 	// other's
 	$from = str_replace('alf888@verizon.net','',$from);
 	$from = str_replace('athompson@siwpc.com','',$from);

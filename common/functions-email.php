@@ -32,7 +32,7 @@ function getTO($cid){
 function getCC($aid){
 if ($aid == "1"){
 	$headers = "Cc: Jennifer Shepherd <jshepherd@logs.com> \n";
-	$headers .= "Cc: Leanna Kennebeck <lkennebeck@logs.com> \n";
+	$headers .= "Cc: Andrea Thompson <AnThompson@logs.com> \n";
 }	
 if ($aid == "3"){
 	$headers .= "Cc: jbunn@siwpc.com \n";
