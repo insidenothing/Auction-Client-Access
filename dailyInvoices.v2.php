@@ -73,10 +73,10 @@ if ($user['level'] == 'Operations'){
 	<?PHP } }?>
 	<?PHP while ($d2=mysql_fetch_array($r2,MYSQL_ASSOC)){ if ($d2[scan]){?>
 		<tr>
-			<td align="center"><?PHP echo $d2[uploadDate]?></td>
-			<td align="center"><?PHP echo $d2[auction]?></td>
-			<td align="center"><?PHP echo $d2['file']?></td>
-			<td align="center"><?PHP echo $d2['pub_dates']?></td>
+			<td align="left"><?PHP echo $d2[uploadDate]?></td>
+			<td align="left"><?PHP echo $d2[auction]?></td>
+			<td align="left"><?php if ($user['level'] == 'Operations'){ echo id2attorneys($d2[attorneys_id])." - "; } ?><?PHP echo $d2['file']?></td>
+			<td align="left"><?PHP echo $d2['pub_dates']?></td>
 			<td align="center"><a href="<?PHP echo $d2[scan]?>" target='_Blank'>PDF INVOICE</a></td>
 		</tr>
 	<?PHP } } ?>
