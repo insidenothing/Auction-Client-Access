@@ -18,12 +18,12 @@ while ($dloop = mysql_fetch_array($r,MYSQL_ASSOC)){
 	$options .= "<option>$dloop[uploadDate]</option>";
 }
 if ($user['level'] == 'Operations'){
-	$r=@mysql_query("select distinct genDate from AIVC where genDate <> '0000-00-00' order by genDate DESC");	
+	$r=@mysql_query("select distinct genDate, date_format(genDate, '%W %D %M %Y') as formatted_date  from AIVC where genDate <> '0000-00-00' order by genDate DESC");	
 }else{
-	$r=@mysql_query("select distinct genDate from AIVC where genDate <> '0000-00-00' and attid = '$user[attorneys_id]' order by genDate DESC");
+	$r=@mysql_query("select distinct genDate, date_format(genDate, '%W %D %M %Y') as formatted_date from AIVC where genDate <> '0000-00-00' and attid = '$user[attorneys_id]' order by genDate DESC");
 }
 while ($dloop = mysql_fetch_array($r,MYSQL_ASSOC)){
-	$options .= "<option>$dloop[genDate]</option>";
+	$options .= "<option value='$dloop[genDate]'>$dloop[formatted_date]</option>";
 }
 ?>
 <form id="form">
