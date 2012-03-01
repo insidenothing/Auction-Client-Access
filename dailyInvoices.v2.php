@@ -13,7 +13,7 @@ $dataFile = str_replace('/dataFiles/auction/invoices/','/data/auction/invoices/'
 */
 
 
-$r=@mysql_query("select distinct uploadDate from scans where uploadDate <> '0000-00-00'  order by uploadDate DESC");
+$r=@mysql_query("select distinct uploadDate, date_format(uploadDate, '%W %D %M %Y') as formatted_date from scans where uploadDate <> '0000-00-00'  order by uploadDate DESC");
 while ($dloop = mysql_fetch_array($r,MYSQL_ASSOC)){
 	$options .= "<option>$dloop[uploadDate]</option>";
 }
