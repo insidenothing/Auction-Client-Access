@@ -17,8 +17,11 @@ $r=@mysql_query("select distinct uploadDate from scans where uploadDate <> '0000
 while ($dloop = mysql_fetch_array($r,MYSQL_ASSOC)){
 	$options .= "<option>$dloop[uploadDate]</option>";
 }
-
-$r=@mysql_query("select distinct genDate from AIVC where genDate <> '0000-00-00' and attid = '$user[attorneys_id]' order by genDate DESC");
+if ($user['level'] == 'Operations'){
+	$r=@mysql_query("select distinct genDate from AIVC where genDate <> '0000-00-00' order by genDate DESC");	
+}else{
+	$r=@mysql_query("select distinct genDate from AIVC where genDate <> '0000-00-00' and attid = '$user[attorneys_id]' order by genDate DESC");
+}
 while ($dloop = mysql_fetch_array($r,MYSQL_ASSOC)){
 	$options .= "<option>$dloop[genDate]</option>";
 }
