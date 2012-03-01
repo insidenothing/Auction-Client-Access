@@ -35,7 +35,7 @@ while ($dloop = mysql_fetch_array($r,MYSQL_ASSOC)){
 
 <?PHP if ($_GET[genDate]){ ?>
 <br>
-<?php echo $_COOKIE['level'] ?> Invoices Generated For
+<?php echo $user['level'] ?> Invoices Generated For
 <?PHP echo $_GET[genDate];?>
 .
 <?PHP
