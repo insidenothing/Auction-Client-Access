@@ -1,5 +1,6 @@
 <?PHP
 include 'header.v2.php';
+$userID = $_COOKIE['user_id'];
 function email2id($email){
 	$r=@mysql_query("select user_id from ps_users where email = '$email'");
 	$d=mysql_fetch_array($r,MYSQL_ASSOC);
