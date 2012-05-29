@@ -124,7 +124,7 @@ if ($user[attorneys_id] == 1){
 }
 ?>
 <div style="font-size:22px">
-Cancellation Request Recieved for Auction # <?PHP echo $_GET[go]?><br />
+Cancellation Request <small>(id#<?php echo $userID;?>)</small> Recieved for Auction # <?PHP echo $_GET[go]?><br />
 <br />
 File <?PHP echo $data[file]?>, <?PHP echo $data[address1]?> on <?PHP echo $data[sale_date]?>.<br />
 <br />
