@@ -1,6 +1,6 @@
 <?PHP
 include 'header.v2.php';
-$userID = $_COOKIE['user_id'];
+
 function email2id($email){
 	$r=@mysql_query("select user_id from ps_users where email = '$email'");
 	$d=mysql_fetch_array($r,MYSQL_ASSOC);
@@ -69,13 +69,13 @@ function buildProof($id){
 
 	
 	}
-$userID = $_COOKIE['user_id'];
+$userID = $user['user_id'];
 if ($_GET[go] && $userID){
 //error_log("cancel.v2.php:good: [Auction $_GET[go]] [".date('h:iA n/j/y')."] [Name: ".$user[name]."] - [ID: ".$userID."] - [AttID: ".$user[attorneys_id]."] - [Email: ".$user[email]."] [IP: ".$_SERVER["REMOTE_ADDR"]."] \n", 3, '/logs/error.log');
 talk('allstaff',$user[name].' from '.id2attorneys($user[attorneys_id]).' cancelled auction '.$_GET[go]);
 
 	$ip = $_SERVER['REMOTE_ADDR'];
-	@mysql_query("UPDATE schedule_items SET pending_cancel='1', pending_by='".$_COOKIE['user_id']."', pending_on=NOW(), closed_datetime=NOW(), pending_ip='$ip' WHERE schedule_id='$_GET[go]'");
+	@mysql_query("UPDATE schedule_items SET pending_cancel='1', pending_by='$userID', pending_on=NOW(), closed_datetime=NOW(), pending_ip='$ip' WHERE schedule_id='$_GET[go]'");
 
 
 	portal_log("Requesting cancellation for auction $_GET[go]", $userID);
@@ -88,7 +88,7 @@ talk('allstaff',$user[name].' from '.id2attorneys($user[attorneys_id]).' cancell
 } elseif($_GET[go] && $user[contact_id] == ''){
 //error_log("cancel.v2.php:bad: [Auction $_GET[go]] [".date('h:iA n/j/y')."] [Name: ".$user[name]."] - [ID: ".$userID."] - [AttID: ".$user[attorneys_id]."] - [Email: ".$user[email]."] [IP: ".$_SERVER["REMOTE_ADDR"]."] \n", 3, '/logs/error.log');
 
-	header('Location: http://hwa1.hwestauctions.com'); // kick user out if they don't have a contact_id
+	header('Location: http://hwestauctions.com'); // kick user out if they don't have a contact_id
 }else{
 //error_log("cancel.v2.php:start: [Auction $_GET[id]] [".date('h:iA n/j/y')."] [Name: ".$user[name]."] - [ID: ".$userID."] - [AttID: ".$user[attorneys_id]."] - [Email: ".$user[email]."] [IP: ".$_SERVER["REMOTE_ADDR"]."] \n", 3, '/logs/error.log');
 
