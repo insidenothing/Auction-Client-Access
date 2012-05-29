@@ -79,13 +79,13 @@ talk('allstaff',$user[name].' from '.id2attorneys($user[attorneys_id]).' cancell
 
 
 	portal_log("Requesting cancellation for auction $_GET[go]", $userID);
-	portal_note("$user[name] Requesting cancellation",$_GET[go]);
+	portal_note($_COOKIE['psportal']['name']." Requesting cancellation",$_GET[go]);
 	pub_cost_flag("CANCEL","$_GET[go]",$_POST[ad_cost]);
 	//buildProof($_GET[go]);
 	$q = "SELECT *, DATE_FORMAT(item_datetime,'%M %D, $Y at %l:%i%p') as item_datetime_f, DATE_FORMAT(item_date,'%M %D, $Y at %l:%i%p') as item_date_f, DATE_FORMAT(update_date,'%M %D, $Y at %l:%i%p') as update_date_f FROM schedule_items WHERE schedule_id = '$_GET[go]'";		
 	$r = @mysql_query ($q) or die(mysql_error());
 	$data = mysql_fetch_array($r, MYSQL_ASSOC);
-} elseif($_GET[go] && $user[contact_id] == ''){
+} elseif($_GET[go] && $userID == ''){
 //error_log("cancel.v2.php:bad: [Auction $_GET[go]] [".date('h:iA n/j/y')."] [Name: ".$user[name]."] - [ID: ".$userID."] - [AttID: ".$user[attorneys_id]."] - [Email: ".$user[email]."] [IP: ".$_SERVER["REMOTE_ADDR"]."] \n", 3, '/logs/error.log');
 
 	header('Location: http://hwestauctions.com'); // kick user out if they don't have a contact_id
