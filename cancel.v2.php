@@ -1,7 +1,7 @@
 <?PHP
 include 'header.v2.php';
 function email2id($email){
-	$r=@mysql_query("select contact_id from contacts where email = '$email'");
+	$r=@mysql_query("select user_id from ps_users where email = '$email'");
 	$d=mysql_fetch_array($r,MYSQL_ASSOC);
 return $d[contact_id];
 }
@@ -12,7 +12,7 @@ function pushProof($id,$ip){
 		//echo "Current directory is now: " . ftp_pwd($conn_id) . "\n";
 	} else { 
 		//echo "Couldn't change directory\n";
-		mail('westads@hwestauctions.com','PRINTER CONNECT','Couldn\'t connect');
+		mail('insidenothing@gmail.com','AUCTION CANCEL: PRINTER CONNECT','Couldn\'t connect');
 		error_log(date('r')." $ip WARNING: Couldn't connect. \n", 3, '/logs/printer.log');
 		return 'fail';
 	}
@@ -22,7 +22,7 @@ function pushProof($id,$ip){
 		//echo "Current directory is now: " . ftp_pwd($conn_id) . "\n";
 	} else { 
 		//echo "Couldn't change directory\n";
-		mail('westads@hwestauctions.com','PRINTER CHDIR','Couldn\'t change directory');
+		mail('insidenothing@gmail.com','AUCTION CANCEL: PRINTER CHDIR','Couldn\'t change directory');
 		error_log(date('r')." $ip WARNING: Couldn't change ftp directory for auction $id cancellation. \n", 3, '/logs/printer.log');
 	}
 	if (ftp_put($conn_id, $remote_file, $file, FTP_BINARY)) {
@@ -32,7 +32,7 @@ function pushProof($id,$ip){
 		error_log(date('r')." $ip NOTICE: Auction $id cancellation printed successfully. \n", 3, '/logs/printer.log');
 	} else {
 		//echo "There was a problem while uploading $file\n";
-		mail('westads@hwestauctions.com','PRINTER PUT','There was a problem while uploading '.$file);
+		mail('insidenothing@gmail.com','AUCTION CANCEL: PRINTER PUT','There was a problem while uploading '.$file);
 		error_log(date('r')." $ip ERROR: There was a problem while uploading $id cancellation. \n", 3, '/logs/printer.log');
 		return 'fail';
 	}
@@ -68,13 +68,13 @@ function buildProof($id){
 
 	
 	}
-$userID = email2id($user[email]);
+$userID = $_COOKIE['user_id'];
 if ($_GET[go] && $userID){
 //error_log("cancel.v2.php:good: [Auction $_GET[go]] [".date('h:iA n/j/y')."] [Name: ".$user[name]."] - [ID: ".$userID."] - [AttID: ".$user[attorneys_id]."] - [Email: ".$user[email]."] [IP: ".$_SERVER["REMOTE_ADDR"]."] \n", 3, '/logs/error.log');
 talk('allstaff',$user[name].' from '.id2attorneys($user[attorneys_id]).' cancelled auction '.$_GET[go]);
 
 	$ip = $_SERVER['REMOTE_ADDR'];
-	@mysql_query("UPDATE schedule_items SET pending_cancel='1', pending_by='$userID', pending_on=NOW(), closed_datetime=NOW(), pending_ip='$ip' WHERE schedule_id='$_GET[go]'");
+	@mysql_query("UPDATE schedule_items SET pending_cancel='1', pending_by='".$_COOKIE['user_id']."', pending_on=NOW(), closed_datetime=NOW(), pending_ip='$ip' WHERE schedule_id='$_GET[go]'");
 
 
 	portal_log("Requesting cancellation for auction $_GET[go]", $userID);
