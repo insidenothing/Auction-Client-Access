@@ -69,7 +69,7 @@ function buildProof($id){
 
 	
 	}
-$userID = $user['user_id'];
+$userID = $_COOKIE['psportal']['contact_id'];
 if ($_GET[go] && $userID){
 //error_log("cancel.v2.php:good: [Auction $_GET[go]] [".date('h:iA n/j/y')."] [Name: ".$user[name]."] - [ID: ".$userID."] - [AttID: ".$user[attorneys_id]."] - [Email: ".$user[email]."] [IP: ".$_SERVER["REMOTE_ADDR"]."] \n", 3, '/logs/error.log');
 talk('allstaff',$user[name].' from '.id2attorneys($user[attorneys_id]).' cancelled auction '.$_GET[go]);
