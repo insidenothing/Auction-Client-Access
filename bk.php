@@ -1,6 +1,6 @@
 <?PHP 
 include 'security.php';
-if (!$_GET[bk_id]){ ?>
+if (!$_GET['bk_id']){ ?>
 <form>
 1) Enter File Number <input name="bk_id"><br>
 2) Click Next <input type="submit" value="Next">
@@ -8,13 +8,13 @@ if (!$_GET[bk_id]){ ?>
 <?PHP }else{ 
 mysql_connect();
 mysql_select_db('intranet');
-$att_id = $user[attorneys_id];
+$att_id = $user['attorneys_id'];
 $q="SELECT * FROM schedule_items WHERE attorneys_id = '$att_id' AND file like '%$_GET[bk_id]%' ORDER BY sale_date, sort_time";
 $r=@mysql_query($q);
 ?>
 <div style="font-size:45px;" align="center"><input type="button" class="noprint" onclick="self.print();" value="Print Case Report"><br>Harvey West Auctioneers</div>
 <div style="font-size:30px;" align="center">
-Case Report for <?PHP echo $_GET[bk_id]?><br>
+Case Report for <?PHP echo $_GET['bk_id']?><br>
 <?PHP echo date('r');?>
 </div>
 <br />
