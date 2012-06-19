@@ -16,7 +16,7 @@ function talk($to,$message){
 
 
 onlinePortal($user[contact_id]);
-hardLog(id2attorneys($user[attorneys_id]).'] ['.$user[name].' Loaded '.$_SERVER[PHP_SELF].'+'.$_SERVER[QUERY_STRING ],'client');
+hardLog(id2attorneys($user[attorneys_id]).'] ['.$user[name].' Loaded '.$_SERVER[PHP_SELF].'+'.$_SERVER[QUERY_STRING],'client');
 function pullStatus($url, $referer){
 	if(!isset($timeout))
         $timeout=30;
