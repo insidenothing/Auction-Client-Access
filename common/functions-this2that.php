@@ -49,7 +49,7 @@ function id2auctioneer($id){
 
 function id2contact($id){
 mysql_select_db ('intranet');
-	$q = "SELECT * FROM contacts WHERE contact_id='$id'";
+	$q = "SELECT * FROM ps_users WHERE id='$id'";
 	$r = @mysql_query($q);
 	$d = mysql_fetch_array($r, MYSQL_ASSOC);
 	$q2 = "SELECT * FROM attorneys WHERE attorneys_id='$d[attorneys_id]'";
