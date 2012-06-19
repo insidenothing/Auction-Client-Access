@@ -80,7 +80,7 @@ talk('allstaff',$user['name'].' from '.id2attorneys($user['attorneys_id']).' can
 
 	portal_log("Requesting cancellation for auction $_GET[go]", $userID);
 	portal_note($_COOKIE['psportal']['name']." Requesting cancellation",$_GET[go]);
-	pub_cost_flag("CANCEL","$_GET['go']",$_POST['ad_cost']);
+	pub_cost_flag("CANCEL","$_GET[go]",$_POST['ad_cost']);
 	//buildProof($_GET[go]);
 	$q = "SELECT *, DATE_FORMAT(item_datetime,'%M %D, $Y at %l:%i%p') as item_datetime_f, DATE_FORMAT(item_date,'%M %D, $Y at %l:%i%p') as item_date_f, DATE_FORMAT(update_date,'%M %D, $Y at %l:%i%p') as update_date_f FROM schedule_items WHERE schedule_id = '$_GET[go]'";		
 	$r = @mysql_query ($q) or die(mysql_error());
