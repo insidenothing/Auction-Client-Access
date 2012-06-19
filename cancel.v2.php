@@ -121,7 +121,7 @@ File <?PHP echo $data['file']?>, <?PHP echo $data['address1']?> on <?PHP echo $d
 </div>
 <?PHP }else{ 
 if ($user['attorneys_id'] == 1){
-	recordEvent("$user['name'] confirmed request to cancel the auction for: $data['file'], $data['address1'] on $data['sale_date']");
+	recordEvent("$user[name] confirmed request to cancel the auction for: $data[file], $data[address1] on $data[sale_date]");
 }
 ?>
 <div style="font-size:22px">
