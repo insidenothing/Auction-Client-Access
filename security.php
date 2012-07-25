@@ -1,6 +1,8 @@
-<?
+<?php
 
 // build $user array from cookie
+$inTwoHours = time() + 7200;
+
 if ($_COOKIE['psportal']['contact_id']){
 	mysql_connect();
 	mysql_select_db ('intranet');
