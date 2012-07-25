@@ -14,7 +14,7 @@ if ($_COOKIE['psportal']['contact_id']){
 
 
 
-if (!$user[name]){
+if (!$user['name']){
 	?>
 	
 	<script>
