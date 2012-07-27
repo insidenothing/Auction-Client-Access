@@ -83,7 +83,7 @@ echo "
 <td nowrap>$data1[sale_date] $data1[sale_time]</td>";
 
 echo '<td nowrap>'.$data1['auctioneer'].' '.auctioneerPhone($data1['auctioneer']);
-echo $data1['auctioneer2'].' '.auctioneerPhone($data1['auctioneer2'];
+echo $data1['auctioneer2'].' '.auctioneerPhone($data1['auctioneer2']);
 echo $data1['auctioneer3'].' '.auctioneerPhone($data1['auctioneer3']).'</td>';
 
 echo "<td style='text-align:left;' nowrap>".substr($data1[address1],0,30)."</td>
