@@ -3,7 +3,7 @@
 // build $user array from cookie
 $inTwoHours = time() + 7200;
 
-if ($_COOKIE['psportal']['contact_id']){
+if (isset($_COOKIE['psportal']['contact_id'])){
 	mysql_connect();
 	mysql_select_db ('intranet');
 	$q1 = "SELECT * FROM ps_users WHERE id = '".$_COOKIE['psportal']['contact_id']."'";
@@ -16,7 +16,7 @@ if ($_COOKIE['psportal']['contact_id']){
 
 
 
-if (!$user['name']){
+if (empty($user['name'])){
 	?>
 	
 	<script>
