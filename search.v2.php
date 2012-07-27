@@ -84,7 +84,7 @@ echo "
 
 <td nowrap>$data1[sale_date] $data1[sale_time]</td>";
 
-echo '<td nowrap';
+echo '<td nowrap>';
 if ($data1['auctioneer'] != ''){ echo auctioneerPhone($data1['auctioneer']); }
 if ($data1['auctioneer2'] != ''){ echo auctioneerPhone($data1['auctioneer2']); }
 if ($data1['auctioneer3'] != ''){ echo auctioneerPhone($data1['auctioneer3']); }
