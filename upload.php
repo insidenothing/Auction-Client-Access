@@ -107,7 +107,7 @@ addNote($newID,$user[name].': Auto-Started on '.date('m/d/Y'));
     	<td><input name="requested_date"> (requested)</td>
 	</tr>
 	<tr>
-    	<td>IRS Lein?</td>
+    	<td>IRS Lien?</td>
     	<td><input type='checkbox' name="irs"> Requires 30 Day Notice</td>
 	</tr>
 	<tr>
