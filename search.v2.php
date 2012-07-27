@@ -85,9 +85,9 @@ echo "
 <td nowrap>$data1[sale_date] $data1[sale_time]</td>";
 
 echo '<td nowrap';
-echo auctioneerPhone($data1['auctioneer']);
-echo auctioneerPhone($data1['auctioneer2']);
-echo auctioneerPhone($data1['auctioneer3']);
+if ($data1['auctioneer'] != ''){ echo auctioneerPhone($data1['auctioneer']); }
+if ($data1['auctioneer2'] != ''){ echo auctioneerPhone($data1['auctioneer2']); }
+if ($data1['auctioneer3'] != ''){ echo auctioneerPhone($data1['auctioneer3']); }
 echo '</td>';
 
 echo "<td style='text-align:left;' nowrap>".substr($data1[address1],0,30)."</td>
