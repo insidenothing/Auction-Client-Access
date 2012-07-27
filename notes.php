@@ -21,7 +21,7 @@ $r=@mysql_query("select client_notes from schedule_items where schedule_id = '$_
 $d=mysql_fetch_array($r,MYSQL_ASSOC);
 $oldNote = stripslashes($d["$field"]);
 $newNote = "<li>From ".$_COOKIE['userdata']['name']." on ".date('m/d/y g:ia').": \"".$_POST['note']."\"</li>".addslashes($oldNote);
-@mysql_query("UPDATE packet SET $_POST[field]='".dbIN($newNote)."' WHERE id='$_GET[packet]'") or die(mysql_error());
+@mysql_query("UPDATE schedule_items SET $_POST[field]='".dbIN($newNote)."' WHERE schedule_id='$_GET[packet]'") or die(mysql_error());
 			$about = strtoupper($_POST['field']);
 			$to = "Auction Updates <westads@hwestauctions.com>";
 			$subject = "Update From Client: Auction ".$_GET['packet'];
