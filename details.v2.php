@@ -35,6 +35,10 @@ if ($data['pending_cancel'] == "0" && $data['item_status'] == "ON SCHEDULE"){
 
 <table border="1" width="100%" style="border-collapse:collapse;" cellspacing="0" cellpadding="5">
 	<tr>
+    	<td valign="top"><strong>Client Notes</strong></td>
+    	<td><iframe src="http://portal.hwestauctions.com/notes.php?packet=<?php echo $_GET[id]; ?>" height="250" width="600"></iframe></td>
+	</tr>
+	<tr>
     	<td valign="top"><strong>Property Address</strong></td>
     	<td><?PHP echo $data['legal_fault']?><br /><?PHP echo $data['address1']?><br /><?PHP echo $data['city']?>, <?PHP echo $data['state']?> <?PHP echo $data['zip']?></td>
 	</tr>
