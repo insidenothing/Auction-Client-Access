@@ -15,8 +15,8 @@ function auctioneerPhone($name){
 	$name2 = substr($name,0,5);
 	$r=@mysql_query("select phone from auctioneers where auctioneer like '$name2%'");
 	$d=mysql_fetch_array($r,MYSQL_ASSOC);
-	if ($name2){
-		return $name.' ('.$d['phone'].') ';
+	if ($name){
+		return $name.' ('.$d['phone'].' '.$name2.') ';
 	}
 }
 ?>
