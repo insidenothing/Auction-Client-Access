@@ -12,7 +12,7 @@ return "#ffcccc";
  }
 }
 function auctioneerPhone($name){
-	$r=@mysql_query("select phone from auctioneers where auctioneer='$name'");
+	$r=@mysql_query("select phone from auctioneers where auctioneer like '".substr($name,0,5)."'%");
 	$d=mysql_fetch_array($r,MYSQL_ASSOC);
 	return $d['phone'];
 }
