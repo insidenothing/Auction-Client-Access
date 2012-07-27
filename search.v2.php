@@ -12,9 +12,9 @@ return "#ffcccc";
  }
 }
 function auctioneerPhone($name){
+	if ($name){
 	$r=@mysql_query("select phone from auctioneers where auctioneer = '$name' or name = '$name' or requested_string = '$name' or confirmed_string = '$name' or available_string = '$name'");
 	$d=mysql_fetch_array($r,MYSQL_ASSOC)or die(mysql_error());
-	if ($d['phone']){
 	return $name.' ('.$d['phone'].') ';
 	}
 }
@@ -84,9 +84,11 @@ echo "
 
 <td nowrap>$data1[sale_date] $data1[sale_time]</td>";
 
-echo '<td nowrap'.auctioneerPhone($data1['auctioneer']);
+echo '<td nowrap';
+echo auctioneerPhone($data1['auctioneer']);
 echo auctioneerPhone($data1['auctioneer2']);
-echo auctioneerPhone($data1['auctioneer3']).'</td>';
+echo auctioneerPhone($data1['auctioneer3']);
+echo '</td>';
 
 echo "<td style='text-align:left;' nowrap>".substr($data1[address1],0,30)."</td>
 <td style='text-align:left;' nowrap>$data1[county]</td>
