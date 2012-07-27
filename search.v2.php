@@ -14,7 +14,7 @@ return "#ffcccc";
 function auctioneerPhone($name){
 	$r=@mysql_query("select phone from auctioneers where name='$name'");
 	$d=mysql_fetch_array($r,MYSQL_ASSOC);
-	return $d['phone'];
+	echo $d['phone'];
 }
 ?>
 <style>
@@ -82,7 +82,7 @@ echo "
 
 <td nowrap>$data1[sale_date] $data1[sale_time]</td>";
 
-echo "<td nowrap>".$data1['auctioneer']." ".auctioneerPhone($data1['auctioneer'])." ".$data1['auctioneer2']." ".auctioneerPhone($data1['auctioneer2']." ".$data1['auctioneer3']." ".auctioneerPhone($data1['auctioneer3'])."</td>";
+echo '<td nowrap>'.$data1['auctioneer'].' '.auctioneerPhone($data1['auctioneer']).' '.$data1['auctioneer2'].' '.auctioneerPhone($data1['auctioneer2'].' '.$data1['auctioneer3'].' '.auctioneerPhone($data1['auctioneer3']).'</td>';
 
 echo "<td style='text-align:left;' nowrap>".substr($data1[address1],0,30)."</td>
 <td style='text-align:left;' nowrap>$data1[county]</td>
