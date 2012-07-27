@@ -81,7 +81,7 @@ echo "
 <td style='text-align:left;' nowrap>$data1[file]</td>
 
 <td nowrap>$data1[sale_date] $data1[sale_time]</td>
-<td nowrap>".$data1['auctioneer'].' '.auctioneerPhone($data1['auctioneer']).' '.$data1['auctioneer'].' '.auctioneerPhone($data1['auctioneer2'].' '.$data1['auctioneer'].' '.auctioneerPhone($data1['auctioneer3'])."</td>
+<td nowrap>".$data1['auctioneer']." ".auctioneerPhone($data1['auctioneer'])." ".$data1['auctioneer2']." ".auctioneerPhone($data1['auctioneer2']." ".$data1['auctioneer3']." ".auctioneerPhone($data1['auctioneer3'])."</td>
 <td style='text-align:left;' nowrap>".substr($data1[address1],0,30)."</td>
 <td style='text-align:left;' nowrap>$data1[county]</td>
 <td>$data1[schedule_id]</td>
