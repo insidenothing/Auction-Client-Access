@@ -3,7 +3,7 @@ include 'common/functions.php';
 mysql_connect();
 mysql_select_db('intranet');
 include 'security.php';
-onlinePortal($user['contact_id']);
+onlinePortal($user['id']);
 function colorMe($str){
  if ($str=="ON SCHEDULE"){
 return "#ccffcc";
