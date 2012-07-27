@@ -1,7 +1,13 @@
 <?PHP
 include 'header.v2.php';
 mysql_select_db ('intranet');
+function auctioneerPhone($name = ''){
 
+	$r=@mysql_query("select phone from auctioneers where auctioneer = '$name' or name = '$name' or requested_string = '$name' or confirmed_string = '$name' or available_string = '$name'");
+	$d=mysql_fetch_array($r,MYSQL_ASSOC)or die(mysql_error());
+	return $name.' ('.$d['phone'].') ';
+	
+}
 $q = "SELECT *, DATE_FORMAT(item_datetime,'%M %D, $Y at %l:%i%p') as item_datetime_f, DATE_FORMAT(item_date,'%M %D, $Y at %l:%i%p') as item_date_f, DATE_FORMAT(update_date,'%M %D, $Y at %l:%i%p') as update_date_f FROM schedule_items WHERE schedule_id = '$_GET[id]'";		
 $r = @mysql_query ($q) or die(mysql_error());
 $data = mysql_fetch_array($r, MYSQL_ASSOC);
@@ -23,6 +29,8 @@ if ($data['pending_cancel'] == "0" && $data['item_status'] == "ON SCHEDULE"){
 
 <table width="100%"><tr><td valign="top">
 <font>Auction Scheduled for <?PHP echo $data['sale_date']?> at <?PHP echo $data['sale_time']?><br />Details for Auction #<?PHP echo $data['schedule_id']?> :: <?PHP echo $data['item_status']?> :: <?PHP echo id2contact($data['canceled_by']);?></font>
+
+<br>Auctioneers: <? if ($data['auctioneer'] != ''){ echo auctioneerPhone($data['auctioneer']); } if ($data['auctioneer2'] != ''){ echo auctioneerPhone($data['auctioneer2']); } if ($data['auctioneer3'] != ''){ echo auctioneerPhone($data['auctioneer3']); } ?><br>
 
 
 <table border="1" width="100%" style="border-collapse:collapse;" cellspacing="0" cellpadding="5">
