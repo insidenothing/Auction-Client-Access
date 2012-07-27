@@ -14,8 +14,9 @@ return "#ffcccc";
 function auctioneerPhone($name){
 	$r=@mysql_query("select phone from auctioneers where auctioneer = '$name' or name = '$name' or requested_string = '$name' or confirmed_string = '$name' or available_string = '$name'");
 	$d=mysql_fetch_array($r,MYSQL_ASSOC)or die(mysql_error());
+	if ($d['phone']){
 	return $name.' ('.$d['phone'].') ';
-	
+	}
 }
 ?>
 <style>
