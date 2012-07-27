@@ -20,15 +20,15 @@ if (isset($_POST['note'])){
 $r=@mysql_query("select client_notes from schedule_items where schedule_id = '$_GET[packet]' LIMIT 0,1");
 $d=mysql_fetch_array($r,MYSQL_ASSOC);
 $oldNote = stripslashes($d["$field"]);
-$newNote = "<li>From ".$_COOKIE['psdata']['name']." on ".date('m/d/y g:ia').": \"".$_POST['note']."\"</li>".addslashes($oldNote);
+$newNote = "<li>From ".$_COOKIE['userdata']['name']." on ".date('m/d/y g:ia').": \"".$_POST['note']."\"</li>".addslashes($oldNote);
 @mysql_query("UPDATE packet SET $_POST[field]='".dbIN($newNote)."' WHERE id='$_GET[packet]'") or die(mysql_error());
 			$about = strtoupper($_POST['field']);
-			$to = "Service Update <service@mdwestserve.com>";
-			$subject = "$about Update: Packet ".$_GET['packet'];
+			$to = "Auction Updates <westads@hwestauctions.com>";
+			$subject = "Update From Client: Auction ".$_GET['packet'];
 			$headers  = "MIME-Version: 1.0 \n";
 			$headers .= "Content-type: text/html; charset=iso-8859-1 \n";
-			$headers .= "From: ".$_COOKIE['psdata']['name']." <".$_COOKIE['psdata']['email'].">  \n";
-			$body = "<hr><a href='http://staff.mdwestserve.com/edit.php?packet=$_GET[packet]'>View Order Page</a>";
+			$headers .= "From: ".$_COOKIE['userdata']['name']." <".$_COOKIE['userdata']['email'].">  \n";
+			$body = "<hr><a href='http://hwestauctions.com/detail/index/$_GET[packet]'>View Order Page</a>";
 			mail($to,$subject,stripslashes($newNote.$body),$headers);
 }
 ?>
