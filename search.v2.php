@@ -14,7 +14,7 @@ return "#ffcccc";
 function auctioneerPhone($name){
 	$r=@mysql_query("select phone from auctioneers where auctioneer='$name'");
 	$d=mysql_fetch_array($r,MYSQL_ASSOC);
-	echo $d['phone'];
+	return $d['phone'];
 }
 ?>
 <style>
