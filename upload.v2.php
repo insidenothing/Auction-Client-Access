@@ -104,7 +104,7 @@ echo "<div style='border:1px;'>".pullStatus('http://data.mdwestserve.com/public.
     	<td><input name="requested_date"> (requested)</td>
 	</tr>
 	<tr>
-    	<td>IRS Lein?</td>
+    	<td>IRS Lien?</td>
     	<td><input type='checkbox' name="irs"> Requires 30 Day Notice</td>
 	</tr>
 	<tr>
