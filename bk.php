@@ -1,6 +1,6 @@
 <?PHP 
 include 'security.php';
-if (!$_GET['bk_id']){ ?>
+if (empty($_GET['bk_id'])){ ?>
 <form>
 1) Enter File Number <input name="bk_id"><br>
 2) Click Next <input type="submit" value="Next">
