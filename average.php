@@ -24,7 +24,7 @@ function average_cost($paper,$year)
 $r=@mysql_query("select distinct paper from schedule_items where ad_cost < '2000.00' and ad_cost > '0.00' and paper <> ''");
 ?>
 <table cellpadding="20"><tr><td valign="top">
-<b>Click on a cost for quantium breakdown.</b><br>
+<b>Click on a cost for quantum breakdown.</b><br>
 All identifiable information removed, the following is for estimation only. 
 <table border="1" cellpadding="5" cellspacing="0">
 	<tr>
@@ -86,8 +86,9 @@ GROUP BY ad_cost
 HAVING cnt >1
 ORDER BY `cnt` DESC limit 0,15";
 $r1=@mysql_query($q1);
+$total=0;
 ?>
-Quantium Results for<br><b><?php echo $_GET['paper'];?> in <?php echo $_GET['year'];?></b>
+Quantum Results for<br><b><?php echo $_GET['paper'];?> in <?php echo $_GET['year'];?></b>
 <table border="1" cellpadding="10" cellspacing="0">
 	<tr>
 		<td>Cost</td>
@@ -97,8 +98,13 @@ Quantium Results for<br><b><?php echo $_GET['paper'];?> in <?php echo $_GET['yea
 	<tr>
 		<td>$<?php echo $d1['ad_cost'];?></td>
 		<td><?php echo  number_format($d1['cnt']/$count,2)*100;?>%</td>
+		<?php $total = $total + (number_format($d1['cnt']/$count,2)*100); ?>
 	</tr>
 <?php } ?>
+	<tr>
+		<td>Threashold</td>
+		<td><?php echo $total;?>%</td>
+	</tr>
 </table>
 
 
