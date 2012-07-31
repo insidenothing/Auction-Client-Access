@@ -23,6 +23,7 @@ function average_cost($paper,$year)
 
 $r=@mysql_query("select distinct paper from schedule_items where ad_cost < '2000.00' and ad_cost > '0.00' and paper <> ''");
 ?>
+<table><tr><td valign="top">
 All identifiable information removed, the following is for estimation only. <b>Click on a cost for quantium breakdown.</b>
 <table border="1" cellpadding="5" cellspacing="0">
 	<tr>
@@ -65,6 +66,7 @@ All identifiable information removed, the following is for estimation only. <b>C
 <?php } ?>
 </table>
 
+</td><td valign="top">
 
 <?php if (isset($_GET['paper']) && isset($_GET['year'])){ 
 $q2= "SELECT schedule_id FROM schedule_items
@@ -96,8 +98,9 @@ $r1=@mysql_query($q1);
 		<td><?php echo $d1['cnt'];?>/<?php echo $count;?> = <?php echo  number_format($d1['cnt']/$count,2)*100;?>%</td>
 	</tr>
 <?php } ?>
-
+</table>
 
 
 
 <?php }?>
+</td></tr></table>
