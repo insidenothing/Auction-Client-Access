@@ -83,7 +83,6 @@ WHERE paper = '".$_GET['paper']."'
 AND sale_date LIKE '".$_GET['year']."%'
 AND ad_cost <> '0.00'
 GROUP BY ad_cost
-HAVING cnt >1
 ORDER BY `cnt` DESC limit 0,15";
 $r1=@mysql_query($q1);
 $total=0;
