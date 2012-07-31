@@ -7,7 +7,7 @@ function average_cost($paper,$year)
 	$return = array();
 	$counter=0;
 	$total=0;
-	$r=@mysql_query("select ad_cost from schedule_items where paper = '$paper' and sale_date like '%$year%' and ad_cost < '2000.00' ");
+	$r=@mysql_query("select ad_cost from schedule_items where paper = '$paper' and sale_date like '%$year%' and ad_cost < '2000.00' and ad_cost > '0.00' ");
 	while($d=mysql_fetch_array($r,MYSQL_ASSOC)){
 		$counter++;
 		$total = $total + $d['ad_cost'];
@@ -21,7 +21,7 @@ function average_cost($paper,$year)
 
 
 
-$r=@mysql_query("select distinct paper from schedule_items where ad_cost < '2000.00' and paper <> ''");
+$r=@mysql_query("select distinct paper from schedule_items where ad_cost < '2000.00' and ad_cost > '0.00' and paper <> ''");
 ?>
 All identifiable information removed, the following is for estimation only.
 <table border="1" cellpadding="5" cellspacing="0">
