@@ -21,10 +21,19 @@ function average_cost($paper,$year)
 
 
 
-$r=@mysql_query("select distinct paper from schedule_items where ad_cost < '2000.00'");
+$r=@mysql_query("select distinct paper from schedule_items where ad_cost < '2000.00' and paper <> ''");
 ?>
 All identifiable information removed, the following is for estimation only.
-<table>
+<table border="1" cellpadding="5" cellspacing="0">
+	<tr>
+		<td>Paper</td>
+		<td>2012</td>
+		<td>2011</td>
+		<td>2010</td>
+		<td>2009</td>
+		<td>2008</td>
+		<td>2007</td>
+	</tr>
 <?php while($d=mysql_fetch_array($r,MYSQL_ASSOC)){ ?>
 	<tr>
 		<td><?php echo $d['paper'];?></td>
