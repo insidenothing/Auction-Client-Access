@@ -37,30 +37,67 @@ All identifiable information removed, the following is for estimation only.
 <?php while($d=mysql_fetch_array($r,MYSQL_ASSOC)){ ?>
 	<tr>
 		<td><?php echo $d['paper'];?></td>
-		<td><?php 
+		<td><a href="?paper=<?php echo $d['paper'];?>&year=2012"><?php 
 		$temp = average_cost($d['paper'],'2012');
 		echo $temp['average'];
-		?></td>
-		<td><?php 
+		?></a></td>
+		<td><a href="?paper=<?php echo $d['paper'];?>&year=2011"><?php 
 		$temp = average_cost($d['paper'],'2011');
 		echo $temp['average'];
-		?></td>
-		<td><?php 
+		?></a></td>
+		<td><a href="?paper=<?php echo $d['paper'];?>&year=2010"><?php 
 		$temp = average_cost($d['paper'],'2010');
 		echo $temp['average'];
-		?></td>
-		<td><?php 
+		?></a></td>
+		<td><a href="?paper=<?php echo $d['paper'];?>&year=2009"><?php 
 		$temp = average_cost($d['paper'],'2009');
 		echo $temp['average'];
-		?></td>
-		<td><?php 
+		?></a></td>
+		<td><a href="?paper=<?php echo $d['paper'];?>&year=2008"><?php 
 		$temp = average_cost($d['paper'],'2008');
 		echo $temp['average'];
-		?></td>
-		<td><?php 
+		?></a></td>
+		<td><a href="?paper=<?php echo $d['paper'];?>&year=2007"><?php 
 		$temp = average_cost($d['paper'],'2007');
 		echo $temp['average'];
-		?></td>
+		?></a></td>
 	</tr>	
 <?php } ?>
 </table>
+
+
+<?php if (isset($_GET['paper']) && isset($_GET['year'])){ 
+$q2= "SELECT schedule_id FROM schedule_items
+WHERE paper = '".$_GET['paper']."'
+AND sale_date LIKE '".$_GET['year']."%'
+AND ad_cost <> '0.00'";
+$r2=@mysql_query($q2);
+$count=mysql_num_rows($r2);
+
+$q1= "SELECT ad_cost, count( schedule_id ) AS cnt
+FROM schedule_items
+WHERE paper = '".$_GET['paper']."'
+AND sale_date LIKE '".$_GET['year']."%'
+AND ad_cost <> '0.00'
+GROUP BY ad_cost
+HAVING cnt >1
+ORDER BY `cnt` DESC";
+$r1=@mysql_query($q1);
+?>
+<table>
+	<tr>
+		<td>Cost</td>
+		<td>Occurance</td>
+	</tr>
+<?php while ($d1 = mysql_fetch_array($r1,MYSQL_ASSOC)){ ?>
+	<tr>
+		<td>$<?php echo $d['ad_cost'];?></td>
+		<td><?php echo $d['cnt'];?>/<?php echo $count;?> = <?php echo  number_format($d['cnt']/$count,2)*100;?>%</td>
+		<td></td>
+	</tr>
+<?php } ?>
+
+
+
+
+<?php }?>
