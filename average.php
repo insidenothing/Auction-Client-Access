@@ -73,7 +73,7 @@ All identifiable information removed, the following is for estimation only.
 $q2= "SELECT schedule_id FROM schedule_items
 WHERE paper = '".$_GET['paper']."'
 AND sale_date LIKE '".$_GET['year']."%'
-AND ad_cost <> '0.00'";
+AND ad_cost <> '0.00' AND ad_cost < '2000.00'";
 $r2=@mysql_query($q2);
 $count=mysql_num_rows($r2);
 
