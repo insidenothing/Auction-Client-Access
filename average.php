@@ -102,7 +102,7 @@ Quantum Results for<br><b><?php echo $_GET['paper'];?> in <?php echo $_GET['year
 	</tr>
 <?php } ?>
 	<tr>
-		<td>Threashold</td>
+		<td>Threshold</td>
 		<td><?php echo $total;?>%</td>
 	</tr>
 </table>
