@@ -23,7 +23,7 @@ function average_cost($paper,$year)
 
 $r=@mysql_query("select distinct paper from schedule_items where ad_cost < '2000.00' and ad_cost > '0.00' and paper <> ''");
 ?>
-All identifiable information removed, the following is for estimation only.
+All identifiable information removed, the following is for estimation only. <b>Click on a cost for quantium breakdown.</b>
 <table border="1" cellpadding="5" cellspacing="0">
 	<tr>
 		<td>Paper</td>
@@ -81,19 +81,19 @@ AND sale_date LIKE '".$_GET['year']."%'
 AND ad_cost <> '0.00'
 GROUP BY ad_cost
 HAVING cnt >1
-ORDER BY `cnt` DESC";
+ORDER BY `cnt` DESC limit 0,15";
 $r1=@mysql_query($q1);
 ?>
-<table>
+<b>Quantium Results for <?php echo $_GET['paper'];?> in <?php echo $_GET['year'];?></b>
+<table border="1" cellpadding="10" cellspacing="0">
 	<tr>
 		<td>Cost</td>
 		<td>Occurance</td>
 	</tr>
 <?php while ($d1 = mysql_fetch_array($r1,MYSQL_ASSOC)){ ?>
 	<tr>
-		<td>$<?php echo $d['ad_cost'];?></td>
-		<td><?php echo $d['cnt'];?>/<?php echo $count;?> = <?php echo  number_format($d['cnt']/$count,2)*100;?>%</td>
-		<td></td>
+		<td>$<?php echo $d1['ad_cost'];?></td>
+		<td><?php echo $d1['cnt'];?>/<?php echo $count;?> = <?php echo  number_format($d1['cnt']/$count,2)*100;?>%</td>
 	</tr>
 <?php } ?>
 
