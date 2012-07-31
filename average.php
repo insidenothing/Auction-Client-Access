@@ -24,7 +24,8 @@ function average_cost($paper,$year)
 $r=@mysql_query("select distinct paper from schedule_items where ad_cost < '2000.00' and ad_cost > '0.00' and paper <> ''");
 ?>
 <table><tr><td valign="top">
-All identifiable information removed, the following is for estimation only. <b>Click on a cost for quantium breakdown.</b>
+<b>Click on a cost for quantium breakdown.</b><br>
+All identifiable information removed, the following is for estimation only. 
 <table border="1" cellpadding="5" cellspacing="0">
 	<tr>
 		<td>Paper</td>
