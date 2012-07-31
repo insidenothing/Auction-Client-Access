@@ -96,7 +96,7 @@ Quantium Results for<br><b><?php echo $_GET['paper'];?> in <?php echo $_GET['yea
 <?php while ($d1 = mysql_fetch_array($r1,MYSQL_ASSOC)){ ?>
 	<tr>
 		<td>$<?php echo $d1['ad_cost'];?></td>
-		<td><?php echo $d1['cnt'];?>/<?php echo $count;?> = <?php echo  number_format($d1['cnt']/$count,2)*100;?>%</td>
+		<td><?php echo  number_format($d1['cnt']/$count,2)*100;?>%</td>
 	</tr>
 <?php } ?>
 </table>
