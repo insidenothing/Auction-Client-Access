@@ -6,7 +6,7 @@ include 'common/functions.php';
 function valueData($key){
   $r=@mysql_query("select valueData from config where keyData = '$key'");
   $d=mysql_fetch_array($r,MYSQL_ASSOC);
-  return $d[valueData];
+  return $d['valueData'];
 }
 function talk($to,$message){
   $username = 'talkabout.files@gmail.com';
@@ -15,8 +15,8 @@ function talk($to,$message){
 }
 
 
-onlinePortal($user[contact_id]);
-hardLog(id2attorneys($user[attorneys_id]).'] ['.$user[name].' Loaded '.$_SERVER[PHP_SELF].'+'.$_SERVER[QUERY_STRING],'client');
+onlinePortal($user['contact_id']);
+hardLog(id2attorneys($user['attorneys_id']).'] ['.$user['name'].' Loaded '.$_SERVER['PHP_SELF'].'+'.$_SERVER['QUERY_STRING'],'client');
 function pullStatus($url, $referer){
 	if(!isset($timeout))
         $timeout=30;
