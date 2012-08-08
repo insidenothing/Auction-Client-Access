@@ -1,4 +1,4 @@
-<? 
+<?PHP
 include 'common/functions.php';
 mysql_connect();
 mysql_select_db('intranet');
@@ -48,13 +48,13 @@ td	{text-align:center; border-bottom: solid 1px #cccccc; padding:2px; font-size:
             
         </form>
 </center>
-<?
+<?PHP
 $att_id = $user['attorneys_id'];
 if (isset($_GET['q'])){
 $q = $_GET['q'];
 ?>
 <table width="100%"  align="center" style="border-collapse:collapse" cellpadding="0" cellspacing="0" border="0">
-<? // DATE_FORMAT(sale_date,'%l:%i%p') as sale_date_f 
+<?PHP // DATE_FORMAT(sale_date,'%l:%i%p') as sale_date_f 
 $i=0;
 mysql_select_db ('intranet');
 //$qdate = $year.'-'.$month.'-'.$day;
