@@ -45,7 +45,7 @@ function invoiceTO($aid,$state){
 		$qx = "SELECT * FROM attorneys WHERE attorneys_id = '$aid'";
 		$rx = @mysql_query($qx) or die(mysql_error());
 		$dx = mysql_fetch_array($rx);		
-		$addy = $dx[invoice_to];
+		$addy = $dx['invoice_to'];
 		$addy = explode(',',$addy);
 		$to = $addy[0];
 	return $to;
@@ -54,7 +54,7 @@ function invoiceCC($aid){
 	$qx = "SELECT * FROM attorneys WHERE attorneys_id = '$aid'";
 	$rx = @mysql_query($qx) or die(mysql_error());
 	$dx = mysql_fetch_array($rx);		
-	$addy = $dx[invoice_to];
+	$addy = $dx['invoice_to'];
 	$addy = explode(',',$addy);
 	$cc = count($addy);
 	$cnt1 = 0;
@@ -88,7 +88,7 @@ function checkRequest($file,$from,$date){
 	$q="SELECT attorneys_id FROM schedule_items WHERE file='$file' and sale_date='$dx'";
 	$r=@mysql_query($q);
 	$d=mysql_fetch_array($r, MYSQL_ASSOC);
-	if (!$d[attorneys_id]){
+	if (empty($d['attorneys_id'])){
 		return "File $file on $dx not found in sales database";
 	} else {
 		$q="SELECT * FROM contacts WHERE email='$from' AND attorneys_id = '$d[attorneys_id]'";	
@@ -97,10 +97,10 @@ function checkRequest($file,$from,$date){
 		$qe="SELECT * FROM contacts WHERE email='$from' AND attorneys_id = '11'";	// allow staff to access all files
 		$re=@mysql_query($qe);
 		$de=mysql_fetch_array($re, MYSQL_ASSOC);
-		if ($d[contact_id]){
+		if ($d['contact_id']){
 			return "PASS";
 		} else {
-			if ($de[contact_id]){
+			if ($de['contact_id']){
 				return "PASS";
 			}else{
 				return "Sender not with attorney or staff";
@@ -112,7 +112,7 @@ function checkHelp($from){
 		$q="SELECT contact_id FROM contacts WHERE email='$from'";	
 		$r=@mysql_query($q);
 		$d=mysql_fetch_array($r, MYSQL_ASSOC);
-		if (!$d[contact_id]){
+		if (empty($d['contact_id'])){
 			return "$from not associated with any attorney";
 		} else {
 			return "PASS";
@@ -122,19 +122,19 @@ function updatedCost($new,$id){
 	$q="SELECT * FROM schedule_items WHERE schedule_id='$id'";
 	$r=@mysql_query($q);
 	$d=mysql_fetch_array($r, MYSQL_ASSOC);
-	if ($d[attorneys_id] == "3" && $d[ad_cost] != $new){
+	if ($d['attorneys_id'] == "3" && $d['ad_cost'] != $new){
 		$body = "
 		Current Publication Cost(s) for $d[address1] on $d[sale_date] :<br>
 		$d[paper] - <strong>$$new</strong>";
-		if ($d[paper2]){
-			if($d[ad_cost2]){
+		if ($d['paper2']){
+			if($d['ad_cost2']){
 				$body .= "<br>$d[paper2] - <strong>$$d[ad_cost2]</strong>";
 			}else{
 				$body .= "<br>We are currently awaiting cost from $d[paper2]";
 			}
 		}
-		if ($d[paper3]){
-			if($d[ad_cost3]){
+		if ($d['paper3']){
+			if($d['ad_cost3']){
 				$body .= "<br>$d[paper3] - <strong>$$d[ad_cost3]</strong>";
 			}else{
 				$body .= "<br>We are currently awaiting cost from $d[paper3]";
