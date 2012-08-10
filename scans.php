@@ -46,9 +46,5 @@ if ($user['level'] == 'Operations'){
 
 </table>
 
-<?PHP }
-	 // end test for _GET[genDate] from line 16
-	?>
-<?PHP
-include 'footer.php';
-?>
+<?PHP } // end test for _GET[genDate] from line 16	?>
+
