@@ -24,7 +24,17 @@ if (empty($user['name'])){
 	</script>
 	
 	<?php 
+	die();
 }
 
-
+if (empty($user)){
+	?>
+	
+	<script>
+	window.open('http://hwestauctions.com/login/dologout','_Parent');
+	</script>
+	
+	<?php 
+	die();
+}
 ?>
