@@ -99,4 +99,4 @@ hardLog(id2attorneys($user['attorneys_id']).'] ['.$user['name'].' Search Results
 
 echo "</table>";
 }
-include 'footer.v2.php';?>
+?>
