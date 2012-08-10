@@ -34,11 +34,13 @@ if ($aid == "1"){
 	$headers = "Cc: Jennifer Shepherd <jshepherd@logs.com> \n";
 	$headers .= "Cc: Andrea Thompson <AnThompson@logs.com> \n";
 }	
+/* jbunn no longer with Sam I. White
 if ($aid == "3"){
 	$headers .= "Cc: jbunn@siwpc.com \n";
 }	
 	return $headers;
 }
+*/
 function invoiceTO($aid,$state){
 		$qx = "SELECT * FROM attorneys WHERE attorneys_id = '$aid'";
 		$rx = @mysql_query($qx) or die(mysql_error());
