@@ -38,9 +38,9 @@ if ($aid == "1"){
 if ($aid == "3"){
 	$headers .= "Cc: jbunn@siwpc.com \n";
 }	
+*/
 	return $headers;
 }
-*/
 function invoiceTO($aid,$state){
 		$qx = "SELECT * FROM attorneys WHERE attorneys_id = '$aid'";
 		$rx = @mysql_query($qx) or die(mysql_error());
