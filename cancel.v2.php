@@ -135,4 +135,3 @@ File <?PHP echo $data['file']?>, <?PHP echo $data['address1']?> on <?PHP echo $d
 
 <?PHP }?>
 
-<?PHP include 'footer.v2.php'; ?>
