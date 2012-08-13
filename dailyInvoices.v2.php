@@ -91,5 +91,5 @@ if ($user['level'] == 'Operations'){
 	 // end test for _GET[genDate] from line 10
 	?>
 <?PHP
-include 'footer.v2.php';
+// include 'footer.v2.php';
 ?>
