@@ -1,7 +1,7 @@
 <?PHP
 include 'header.v2.php';
 $options = '';
-hardLog(id2attorneys($user[attorneys_id]).'] ['.$user[name].' Loaded '.$_SERVER[PHP_SELF].'+'.$_SERVER[QUERY_STRING ],'client');
+hardLog(id2attorneys($user['attorneys_id']).'] ['.$user['name'].' Loaded '.$_SERVER['PHP_SELF'].'+'.$_SERVER['QUERY_STRING '],'client');
 /*
  $r=@mysql_query("select iid, dataFile from AIVC");
 while ($dloop = mysql_fetch_array($r,MYSQL_ASSOC)){
@@ -36,10 +36,10 @@ while ($dloop = mysql_fetch_array($r,MYSQL_ASSOC)){
 <?PHP echo $options;?></select>
 </form>
 
-<?PHP if ($_GET[genDate]){ ?>
+<?PHP if ($_GET['genDate']){ ?>
 <br>
 <?php echo $user['level'] ?> Invoices Generated For
-<?PHP echo $_GET[genDate];?>
+<?PHP echo $_GET['genDate'];?>
 .
 <?PHP
 
@@ -67,18 +67,18 @@ if ($user['level'] == 'Operations'){
 	
 	<?PHP while ($d=mysql_fetch_array($r,MYSQL_ASSOC)){ if ($d[url]){?>
 		<tr>
-			<td align="center"><?PHP echo $d[stored]?></td>
-			<td align="center"><?PHP echo $d[auctionID]?></td>
+			<td align="center"><?PHP echo $d['stored']?></td>
+			<td align="center"><?PHP echo $d['auctionID']?></td>
 			<td align="center"></td>
 			<td align="center"></td>
-			<td align="center"><a href="<?PHP echo $d[url]?>" target='_Blank'>PDF INVOICE</a></td>
+			<td align="center"><a href="<?PHP echo $d['url']?>" target='_Blank'>PDF INVOICE</a></td>
 		</tr>
 	<?PHP } }?>
-	<?PHP while ($d2=mysql_fetch_array($r2,MYSQL_ASSOC)){ if ($d2[scan]){?>
+	<?PHP while ($d2=mysql_fetch_array($r2,MYSQL_ASSOC)){ if ($d2['scan']){?>
 		<tr>
-			<td align="left"><?PHP echo $d2[uploadDate]?></td>
-			<td align="left"><?PHP echo $d2[auction]?></td>
-			<td align="left"><?php if ($user['level'] == 'Operations'){ echo id2attorneys($d2[attorneys_id])." - "; } ?><?PHP echo $d2['file']?></td>
+			<td align="left"><?PHP echo $d2['uploadDate']?></td>
+			<td align="left"><?PHP echo $d2['auction']?></td>
+			<td align="left"><?php if ($user['level'] == 'Operations'){ echo id2attorneys($d2['attorneys_id'])." - "; } ?><?PHP echo $d2['file']?></td>
 			<td align="left"><?PHP echo $d2['pub_dates']?></td>
 			<td align="center"><a href="<?PHP echo $d2[scan]?>" target='_Blank'>PDF INVOICE</a></td>
 		</tr>
@@ -90,6 +90,3 @@ if ($user['level'] == 'Operations'){
 <?PHP }
 	 // end test for _GET[genDate] from line 10
 	?>
-<?PHP
-// include 'footer.v2.php';
-?>
