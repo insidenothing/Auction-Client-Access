@@ -11,7 +11,7 @@ function auctioneerPhone($name = ''){
 $q = "SELECT *, DATE_FORMAT(item_datetime,'%M %D, $Y at %l:%i%p') as item_datetime_f, DATE_FORMAT(item_date,'%M %D, $Y at %l:%i%p') as item_date_f, DATE_FORMAT(update_date,'%M %D, $Y at %l:%i%p') as update_date_f FROM schedule_items WHERE schedule_id = '$_GET[id]'";		
 $r = @mysql_query ($q) or die(mysql_error());
 $data = mysql_fetch_array($r, MYSQL_ASSOC);
-portal_log("Accessing Details for Auction $data[schedule_id] ($data[address1] : $data[sale_date] @$data[sale_time])", $user[contact_id]);
+portal_log("Accessing Details for Auction $data[schedule_id] ($data[address1] : $data[sale_date] @$data[sale_time])", $user['contact_id']);
 
 @mysql_query("INSERT INTO portal_views (user_id, auction_id, stamp_date) values ('".$user['contact_id']."', '".$data['schedule_id']."', NOW())");
 
@@ -20,7 +20,7 @@ if ($data['pending_cancel'] == "1" && $data['item_status'] == "ON SCHEDULE"){
 }
 ?>
 
-<a href="simpleDetails.v2.php?id=<?PHP echo $_GET[id]?>">Simple View</a>
+<a href="simpleDetails.v2.php?id=<?PHP echo $_GET['id']?>">Simple View</a>
 <?PHP
 if ($data['pending_cancel'] == "0" && $data['item_status'] == "ON SCHEDULE"){
 	echo ", <a href='cancel.v2.php?id=".$data['schedule_id']."'><font>Request Auction Cancellation</font></a>";
@@ -30,13 +30,13 @@ if ($data['pending_cancel'] == "0" && $data['item_status'] == "ON SCHEDULE"){
 <table width="100%"><tr><td valign="top">
 <font>Auction Scheduled for <?PHP echo $data['sale_date']?> at <?PHP echo $data['sale_time']?><br />Details for Auction #<?PHP echo $data['schedule_id']?> :: <?PHP echo $data['item_status']?> :: <?PHP echo id2contact($data['canceled_by']);?></font>
 
-<br>Auctioneers: <? if ($data['auctioneer'] != ''){ echo auctioneerPhone($data['auctioneer']); } if ($data['auctioneer2'] != ''){ echo auctioneerPhone($data['auctioneer2']); } if ($data['auctioneer3'] != ''){ echo auctioneerPhone($data['auctioneer3']); } ?><br>
+<br>Auctioneers: <?PHP if ($data['auctioneer'] != ''){ echo auctioneerPhone($data['auctioneer']); } if ($data['auctioneer2'] != ''){ echo auctioneerPhone($data['auctioneer2']); } if ($data['auctioneer3'] != ''){ echo auctioneerPhone($data['auctioneer3']); } ?><br>
 
 
 <table border="1" width="100%" style="border-collapse:collapse;" cellspacing="0" cellpadding="5">
 	<tr>
     	<td valign="top"><strong>Client Notes</strong></td>
-    	<td><iframe src="http://portal.hwestauctions.com/notes.php?packet=<?php echo $_GET[id]; ?>" height="150" width="700"></iframe></td>
+    	<td><iframe src="http://portal.hwestauctions.com/notes.php?packet=<?PHP echo $_GET['id']; ?>" height="150" width="700"></iframe></td>
 	</tr>
 	<tr>
     	<td valign="top"><strong>Property Address</strong></td>
@@ -58,7 +58,7 @@ if ($data['pending_cancel'] == "0" && $data['item_status'] == "ON SCHEDULE"){
     	<td colspan="2">
 		Online File Storage<br>
 			<?PHP
-			$rfi = @mysql_query("select * from scans where auction = '".$data[schedule_id]."' order by id desc limit 0,1 ");
+			$rfi = @mysql_query("select * from scans where auction = '".$data['schedule_id']."' order by id desc limit 0,1 ");
 			while ($dfi = mysql_fetch_array($rfi,MYSQL_ASSOC)){
 				echo "<li><a href='".$dfi['scan']."' target='_Blank'>".$dfi['method']." ".id2name($dfi['userID'])."</a></li>";
 			}
