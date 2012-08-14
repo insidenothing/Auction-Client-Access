@@ -164,7 +164,4 @@ while ($d67 = mysql_fetch_array($r67,MYSQL_ASSOC)){
 <div style='border:solid 1px #000;'><?PHP echo $data['LiveAdHTML'];?></div>
 <?PHP } ?>
 
-<?PHP
 
-include 'footer.v2.php';
-?>
