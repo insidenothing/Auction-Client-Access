@@ -156,5 +156,5 @@ echo "<div style='border:1px;'>".pullStatus('http://data.mdwestserve.com/public.
 <div align="center" style="font-size:12px">Please Only Send Files In <em>.DOC or .PDF</em> Format.</div>
 </form>
 <?
-include 'footer.v2.php';
+mysql_close();
 ?>
