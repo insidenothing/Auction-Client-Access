@@ -1,13 +1,13 @@
-<?
+<?PHP
 include 'header.v2.php';
 
-hardLog(id2attorneys($user[attorneys_id]).'] ['.$user[name].' Starting Auction Upload','client');
+hardLog(id2attorneys($user['attorneys_id']).'] ['.$user['name'].' Starting Auction Upload','client');
 
 date_default_timezone_set('America/New_York');
 $ip = $_SERVER['REMOTE_ADDR'];
-$attid = $user[attorneys_id];
-$id = $user[contact_id];
-if ($_POST[submit]){
+$attid = $user['attorneys_id'];
+$id = $user['contact_id'];
+if ($_POST['submit']){
 // ok first we need to go get the files
 echo "<hr>";
 //echo "<h2 align='center'>Transmitting $_POST[file] :: $_POST[last_fault]<br> ".$user[name]." ($ip)</h2>";
@@ -20,7 +20,7 @@ echo "<h2>Recieved: ".date('r')."</h2>";
 echo "<h2>File Number: $_POST[file]</h2>";
 echo "<h2>County: $_POST[county]</h2>";
 
-$file_path = $path.$_POST[file]."-".$_POST[last_fault]."-".date('r');
+$file_path = $path.$_POST['file']."-".$_POST['last_fault']."-".date('r');
 if (!file_exists($file_path)){
 	mkdir ($file_path,0777);
 }
@@ -71,24 +71,24 @@ $link3 = "http://portal.hwestauctions.com/$target_path";
 
 		$newID = mysql_insert_id();
 		echo  "<h1>Auction #$newID AutoStarted</h1>";
-hardLog(id2attorneys($user[attorneys_id]).'] ['.$user[name].' Confirmed Auction Upload '.$newID,'client');
+hardLog(id2attorneys($user['attorneys_id']).'] ['.$user['name'].' Confirmed Auction Upload '.$newID,'client');
 
-addNote($newID,$user[name].': Auto-Started on '.date('m/d/Y'));
+addNote($newID,$user['name'].': Auto-Started on '.date('m/d/Y'));
 			
 			
 			$print .= date("F d Y H:i:s.")." : Portal upload started\n";
-			$print .= date("F d Y H:i:s.")." : Uploaded by ".$user[name]." \n";
+			$print .= date("F d Y H:i:s.")." : Uploaded by ".$user['name']." \n";
 			$print .= date("F d Y H:i:s.")." : New Auction ID $newID \n";
 			$print .= date("F d Y H:i:s.")." : Portal upload complete\n";
 	
 			
 			
-			mail('hwa.archive@gmail.com',$user[name].': NEW ORDER FOR '.$_POST['file'],addslashes($print));
+			mail('hwa.archive@gmail.com',$user['name'].': NEW ORDER FOR '.$_POST['file'],addslashes($print));
 
 //portal_log("Sent Ad Packet for $_POST[file] / $_POST[last_fault]", $user[contact_id]);
 
 
-echo "<div style='border:1px;'>".pullStatus('http://data.mdwestserve.com/public.php?large='.$_POST[file],'HWA SERVICE')."</div>";
+echo "<div style='border:1px;'>".pullStatus('http://data.mdwestserve.com/public.php?large='.$_POST['file'],'HWA SERVICE')."</div>";
 
 }
 ?>
@@ -155,6 +155,6 @@ echo "<div style='border:1px;'>".pullStatus('http://data.mdwestserve.com/public.
 </table>
 <div align="center" style="font-size:12px">Please Only Send Files In <em>.DOC or .PDF</em> Format.</div>
 </form>
-<?
+<?PHP
 mysql_close();
 ?>
