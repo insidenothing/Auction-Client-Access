@@ -76,14 +76,14 @@ hardLog(id2attorneys($user['attorneys_id']).'] ['.$user['name'].' Confirmed Auct
 addNote($newID,$user['name'].': Auto-Started on '.date('m/d/Y'));
 			
 			
-			$print .= date("F d Y H:i:s.")." : Portal upload started
-			";
-			$print .= date("F d Y H:i:s.")." : Uploaded by ".$user['name']."
-			";
-			$print .= date("F d Y H:i:s.")." : New Auction ID $newID 
-			";
-			$print .= date("F d Y H:i:s.")." : Portal upload complete
-			";
+$print .= date("F d Y H:i:s.")." : Portal upload started
+";
+$print .= date("F d Y H:i:s.")." : Uploaded by ".$user['name']."
+";
+$print .= date("F d Y H:i:s.")." : New Auction ID $newID 
+";
+$print .= date("F d Y H:i:s.")." : Portal upload complete
+";
 			if ($user['attorneys_id'] == '3'){
 				$printer = 'laurie';
 			}else{
