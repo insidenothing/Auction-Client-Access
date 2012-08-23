@@ -89,7 +89,7 @@ $print .= date("F d Y H:i:s.")." : Portal upload complete
 			}else{
 				$printer = 'tracy';
 			}
-			$command = 'echo "'.$print.'" | a2ps --columns=1 --rows=1-P '.$printer;
+			$command = 'echo "'.$print.'" | a2ps --columns=1 --rows=1 -P '.$printer;
 			exec($command);
 			
 			
