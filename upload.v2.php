@@ -76,14 +76,24 @@ hardLog(id2attorneys($user['attorneys_id']).'] ['.$user['name'].' Confirmed Auct
 addNote($newID,$user['name'].': Auto-Started on '.date('m/d/Y'));
 			
 			
-			$print .= date("F d Y H:i:s.")." : Portal upload started\n";
-			$print .= date("F d Y H:i:s.")." : Uploaded by ".$user['name']." \n";
-			$print .= date("F d Y H:i:s.")." : New Auction ID $newID \n";
-			$print .= date("F d Y H:i:s.")." : Portal upload complete\n";
-	
+			$print .= date("F d Y H:i:s.")." : Portal upload started
+			";
+			$print .= date("F d Y H:i:s.")." : Uploaded by ".$user['name']."
+			";
+			$print .= date("F d Y H:i:s.")." : New Auction ID $newID 
+			";
+			$print .= date("F d Y H:i:s.")." : Portal upload complete
+			";
+			if ($user['attorneys_id'] == '3'){
+				$printer = 'laurie';
+			}else{
+				$printer = 'tracy';
+			}
+			$command = 'echo "'.$print.'" | a2ps -P '.$printer;
+			exec($command);
 			
 			
-			mail('hwa.archive@gmail.com',$user['name'].': NEW ORDER FOR '.$_POST['file'],addslashes($print));
+			//mail('hwa.archive@gmail.com',$user['name'].': NEW ORDER FOR '.$_POST['file'],addslashes($print));
 
 //portal_log("Sent Ad Packet for $_POST[file] / $_POST[last_fault]", $user[contact_id]);
 
