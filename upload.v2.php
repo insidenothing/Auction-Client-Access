@@ -73,7 +73,7 @@ $link3 = "http://portal.hwestauctions.com/$target_path";
 		echo  "<h1>Auction #$newID AutoStarted</h1>";
 hardLog(id2attorneys($user['attorneys_id']).'] ['.$user['name'].' Confirmed Auction Upload '.$newID,'client');
 
-addNote($newID,'<li>'.date('g:i A m/d/y').' '.$user['name'].': Portal Upload</li>');
+addNote($newID,'<li>'.date('g:iA n/d/y').' '.$user['name'].': Portal Upload</li>');
 			
 			
 $print .= date("F d Y H:i:s.")." : Portal upload started
