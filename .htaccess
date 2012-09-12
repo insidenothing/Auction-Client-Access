@@ -1,0 +1,4 @@
+php_value mysql.default_user hwestauctions
+php_value mysql.default_host localhost
+php_value mysql.default_password redcrest
+
