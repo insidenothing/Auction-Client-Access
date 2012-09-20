@@ -1,4 +1,31 @@
-<?
+<?PHP
+static public function htmlspecialchars($string, $quote_style = ENT_COMPAT, $charset = 'ISO-8859-1', $double_encode = true)
+	{
+		/*
+		if (!$charset)
+		{
+			$charset = 'ISO-8859-1';
+		}
+		
+		if (version_compare(PHP_VERSION, '5.2.3', '>='))
+		{
+			return htmlspecialchars($string, $quote_style, $charset, $double_encode);
+		}
+		else
+		{
+			$string = htmlspecialchars($string, $quote_style, $charset);
+			
+			$fix = array(
+				'&amp;amp;' => '&amp;', 
+				'&amp;quot;' => '&quot;', 
+				);
+			
+			return str_replace(array_keys($fix), array_values($fix), $string);
+		}
+		*/
+		
+		return QuickBooks_XML::encode($str, true, $double_encode);
+}
 function cleanData($str){
 $str = str_replace('
 ','',$str);
