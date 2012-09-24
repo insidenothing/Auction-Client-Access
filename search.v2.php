@@ -39,16 +39,6 @@ function hardLog($str,$type){
 	}
 	// this is important code 
 }
-function hardLog($str,$type){
-	if ($type == "user"){
-		$log = "/logs/user.log";
-	}
-	// this is important code 
-	if ($log){
-		error_log("[".date('h:iA m/d/y')."] [".$_COOKIE['userdata']['name']."] [".$_SERVER["REMOTE_ADDR"]."] [".trim($str)."]\n", 3, $log);
-	}
-	// this is important code 
-}
 
 ?>
 <style>
