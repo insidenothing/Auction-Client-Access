@@ -1,15 +1,26 @@
-<?PHP
-include 'common/functions.php';
-mysql_connect();
-mysql_select_db('intranet');
-include 'security.php';
+<?PHP  if (empty($_SESSION)) {
+    session_start();
+  } $connect_step1 = @mysql_connect (); $connect_step2 = mysql_select_db ('intranet'); if (!$_COOKIE['userdata']['level']){ ?>
+<script>
+window.open('http://hwestauctions.com/login/dologout','_Parent');
+</script>
+<?PHP }
+//include 'common/functions.php';
+
+
+function onlinePortal($id){
+	$now = time();
+	@mysql_query("UPDATE ps_users SET online_now='$now' WHERE id='$id'");
+}
+
 onlinePortal($user['id']);
+
 function colorMe($str){
- if ($str=="ON SCHEDULE"){
-return "#ccffcc";
- }else{
-return "#ffcccc";
- }
+	 if ($str=="ON SCHEDULE"){
+	return "#ccffcc";
+	 }else{
+	return "#ffcccc";
+	 }
 }
 function auctioneerPhone($name = ''){
 
@@ -18,6 +29,27 @@ function auctioneerPhone($name = ''){
 	return $name.' ('.$d['phone'].') ';
 	
 }
+function hardLog($str,$type){
+	if ($type == "user"){
+		$log = "/logs/user.log";
+	}
+	// this is important code 
+	if ($log){
+		error_log("[".date('h:iA m/d/y')."] [".$_COOKIE['userdata']['name']."] [".$_SERVER["REMOTE_ADDR"]."] [".trim($str)."]\n", 3, $log);
+	}
+	// this is important code 
+}
+function hardLog($str,$type){
+	if ($type == "user"){
+		$log = "/logs/user.log";
+	}
+	// this is important code 
+	if ($log){
+		error_log("[".date('h:iA m/d/y')."] [".$_COOKIE['userdata']['name']."] [".$_SERVER["REMOTE_ADDR"]."] [".trim($str)."]\n", 3, $log);
+	}
+	// this is important code 
+}
+
 ?>
 <style>
 body {margin:0px; padding:0px;}

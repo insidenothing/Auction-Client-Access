@@ -131,4 +131,4 @@ while ($dn=mysql_fetch_array($rn, MYSQL_ASSOC)){?>
 <iframe src="http://portal.hwestauctions.com/notes.php?packet=<?php echo $_GET[id]; ?>" height="250" width="600"></iframe>
 
 
-<?PHP include 'footer.v2.php'; ?>
+<?PHP @mysql_close() ?>
